@@ -6,6 +6,17 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A58BBE8F2D945BBF007EEACE /* FieldMateLiveActivityExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A58BBE792D945BBE007EEACE /* FieldMateLiveActivityExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A58BBE992D9461FD007EEACE /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58BBE7D2D945BBF007EEACE /* SwiftUI.framework */; };
+		A58BBE9A2D9461FD007EEACE /* SwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A58BBE7D2D945BBF007EEACE /* SwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A58BBE9C2D9461FE007EEACE /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58BBE7B2D945BBE007EEACE /* WidgetKit.framework */; };
+		A58BBE9D2D9461FE007EEACE /* WidgetKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A58BBE7B2D945BBE007EEACE /* WidgetKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A5AC1BEA2D94B55B0029EB6D /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AC1BC42D94B1E20029EB6D /* ActivityKit.framework */; };
+		A5AC1BEE2D94B6030029EB6D /* ActivityKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AC1BC42D94B1E20029EB6D /* ActivityKit.framework */; };
+		A5AC1BEF2D94B6030029EB6D /* ActivityKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5AC1BC42D94B1E20029EB6D /* ActivityKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A58BBE402D9445BF007EEACE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -21,17 +32,76 @@
 			remoteGlobalIDString = A58BBE2E2D9445BE007EEACE;
 			remoteInfo = FieldMateV2;
 		};
+		A58BBE8D2D945BBF007EEACE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A58BBE272D9445BE007EEACE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A58BBE782D945BBE007EEACE;
+			remoteInfo = FieldMateLiveActivityExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A58BBE942D945BBF007EEACE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A58BBE8F2D945BBF007EEACE /* FieldMateLiveActivityExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58BBE9B2D9461FD007EEACE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A5AC1BEF2D94B6030029EB6D /* ActivityKit.framework in Embed Frameworks */,
+				A58BBE9A2D9461FD007EEACE /* SwiftUI.framework in Embed Frameworks */,
+				A58BBE9D2D9461FE007EEACE /* WidgetKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		A58BBE2F2D9445BE007EEACE /* FieldMateV2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FieldMateV2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58BBE3F2D9445BF007EEACE /* FieldMateV2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieldMateV2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58BBE492D9445BF007EEACE /* FieldMateV2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FieldMateV2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58BBE792D945BBE007EEACE /* FieldMateLiveActivityExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FieldMateLiveActivityExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58BBE7B2D945BBE007EEACE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A58BBE7D2D945BBF007EEACE /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		A5AC1BC42D94B1E20029EB6D /* ActivityKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ActivityKit.framework; path = System/Library/Frameworks/ActivityKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+				"Preview Content/Untitled.swift",
+			);
+			target = A58BBE2E2D9445BE007EEACE /* FieldMateV2 */;
+		};
+		A58BBE932D945BBF007EEACE /* Exceptions for "FieldMateLiveActivity" folder in "FieldMateLiveActivityExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		A58BBE312D9445BE007EEACE /* FieldMateV2 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */,
+			);
 			path = FieldMateV2;
 			sourceTree = "<group>";
 		};
@@ -45,6 +115,14 @@
 			path = FieldMateV2UITests;
 			sourceTree = "<group>";
 		};
+		A58BBE7F2D945BBF007EEACE /* FieldMateLiveActivity */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A58BBE932D945BBF007EEACE /* Exceptions for "FieldMateLiveActivity" folder in "FieldMateLiveActivityExtension" target */,
+			);
+			path = FieldMateLiveActivity;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5AC1BEA2D94B55B0029EB6D /* ActivityKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +148,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A58BBE762D945BBE007EEACE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5AC1BEE2D94B6030029EB6D /* ActivityKit.framework in Frameworks */,
+				A58BBE992D9461FD007EEACE /* SwiftUI.framework in Frameworks */,
+				A58BBE9C2D9461FE007EEACE /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +167,8 @@
 				A58BBE312D9445BE007EEACE /* FieldMateV2 */,
 				A58BBE422D9445BF007EEACE /* FieldMateV2Tests */,
 				A58BBE4C2D9445BF007EEACE /* FieldMateV2UITests */,
+				A58BBE7F2D945BBF007EEACE /* FieldMateLiveActivity */,
+				A58BBE7A2D945BBE007EEACE /* Frameworks */,
 				A58BBE302D9445BE007EEACE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,8 +179,19 @@
 				A58BBE2F2D9445BE007EEACE /* FieldMateV2.app */,
 				A58BBE3F2D9445BF007EEACE /* FieldMateV2Tests.xctest */,
 				A58BBE492D9445BF007EEACE /* FieldMateV2UITests.xctest */,
+				A58BBE792D945BBE007EEACE /* FieldMateLiveActivityExtension.appex */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A58BBE7A2D945BBE007EEACE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A5AC1BC42D94B1E20029EB6D /* ActivityKit.framework */,
+				A58BBE7B2D945BBE007EEACE /* WidgetKit.framework */,
+				A58BBE7D2D945BBF007EEACE /* SwiftUI.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,10 +204,12 @@
 				A58BBE2B2D9445BE007EEACE /* Sources */,
 				A58BBE2C2D9445BE007EEACE /* Frameworks */,
 				A58BBE2D2D9445BE007EEACE /* Resources */,
+				A58BBE942D945BBF007EEACE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A58BBE8E2D945BBF007EEACE /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				A58BBE312D9445BE007EEACE /* FieldMateV2 */,
@@ -163,6 +267,29 @@
 			productReference = A58BBE492D9445BF007EEACE /* FieldMateV2UITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A58BBE902D945BBF007EEACE /* Build configuration list for PBXNativeTarget "FieldMateLiveActivityExtension" */;
+			buildPhases = (
+				A58BBE752D945BBE007EEACE /* Sources */,
+				A58BBE762D945BBE007EEACE /* Frameworks */,
+				A58BBE772D945BBE007EEACE /* Resources */,
+				A58BBE9B2D9461FD007EEACE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				A58BBE7F2D945BBF007EEACE /* FieldMateLiveActivity */,
+			);
+			name = FieldMateLiveActivityExtension;
+			packageProductDependencies = (
+			);
+			productName = FieldMateLiveActivityExtension;
+			productReference = A58BBE792D945BBE007EEACE /* FieldMateLiveActivityExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -184,6 +311,9 @@
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = A58BBE2E2D9445BE007EEACE;
 					};
+					A58BBE782D945BBE007EEACE = {
+						CreatedOnToolsVersion = 16.2;
+					};
 				};
 			};
 			buildConfigurationList = A58BBE2A2D9445BE007EEACE /* Build configuration list for PBXProject "FieldMateV2" */;
@@ -203,6 +333,7 @@
 				A58BBE2E2D9445BE007EEACE /* FieldMateV2 */,
 				A58BBE3E2D9445BF007EEACE /* FieldMateV2Tests */,
 				A58BBE482D9445BF007EEACE /* FieldMateV2UITests */,
+				A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -223,6 +354,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		A58BBE472D9445BF007EEACE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58BBE772D945BBE007EEACE /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,6 +391,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A58BBE752D945BBE007EEACE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -265,6 +410,11 @@
 			isa = PBXTargetDependency;
 			target = A58BBE2E2D9445BE007EEACE /* FieldMateV2 */;
 			targetProxy = A58BBE4A2D9445BF007EEACE /* PBXContainerItemProxy */;
+		};
+		A58BBE8E2D945BBF007EEACE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */;
+			targetProxy = A58BBE8D2D945BBF007EEACE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -396,9 +546,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FieldMateV2/Preview Content\"";
-				DEVELOPMENT_TEAM = X38VF9H5UA;
+				DEVELOPMENT_TEAM = V2R2B23AM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FieldMateV2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -425,9 +576,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FieldMateV2/Preview Content\"";
-				DEVELOPMENT_TEAM = X38VF9H5UA;
+				DEVELOPMENT_TEAM = V2R2B23AM7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FieldMateV2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -518,6 +670,60 @@
 			};
 			name = Release;
 		};
+		A58BBE912D945BBF007EEACE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V2R2B23AM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FieldMateLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FieldMateLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppleDev.FieldMateV2.FieldMateLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A58BBE922D945BBF007EEACE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V2R2B23AM7;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FieldMateLiveActivity/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FieldMateLiveActivity;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = AppleDev.FieldMateV2.FieldMateLiveActivity;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -553,6 +759,15 @@
 			buildConfigurations = (
 				A58BBE5A2D9445BF007EEACE /* Debug */,
 				A58BBE5B2D9445BF007EEACE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A58BBE902D945BBF007EEACE /* Build configuration list for PBXNativeTarget "FieldMateLiveActivityExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58BBE912D945BBF007EEACE /* Debug */,
+				A58BBE922D945BBF007EEACE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

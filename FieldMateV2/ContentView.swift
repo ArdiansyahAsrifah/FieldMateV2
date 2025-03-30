@@ -7,18 +7,36 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct CalendarView: View {
+    @State private var isShowingEventModal = false
+    @State private var selectedDate = Date()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationView {
+            ZStack {
+                Color.appBackground.ignoresSafeArea()
+                
+                VStack(spacing: 16) {
+                    Header(isShowingEventModal: $isShowingEventModal)
+                    
+                    WeekView(selectedDate: $selectedDate)
+                        .padding(.bottom, 4)
+                    
+                    TaskListView(selectedDate: selectedDate)
+                }
+                .padding(.top)
+            }
         }
-        .padding()
     }
 }
 
-#Preview {
-    ContentView()
+#Preview("Light Mode") {
+    CalendarView()
+        .preferredColorScheme(.light)
 }
+
+#Preview("Dark Mode") {
+    CalendarView()
+        .preferredColorScheme(.dark)
+}
+

@@ -6,12 +6,38 @@
 //
 
 import SwiftUI
+import ActivityKit
 
 @main
-struct FieldMateV2App: App {
+struct FieldMateApp: App {
+    @State private var activity: Activity<FieldMateLiveActivityAttributes>?
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CalendarView()
+                .onAppear {
+                    startLiveActivity()
+                }
+        }
+    }
+
+    private func startLiveActivity() {
+        let attributes = FieldMateLiveActivityAttributes(taskID: "1234")
+        let state = FieldMateLiveActivityAttributes.ContentState(
+            taskTitle: "Cek AC",
+            taskTime: "09:30 AM",
+            taskLocation: "Apple Developer Academy"
+        )
+
+        do {
+            activity = try Activity<FieldMateLiveActivityAttributes>.request(
+                attributes: attributes,
+                contentState: state,
+                pushType: nil
+            )
+            print("✅ Live Activity dimulai!")
+        } catch {
+            print("❌ Gagal memulai Live Activity: \(error.localizedDescription)")
         }
     }
 }
