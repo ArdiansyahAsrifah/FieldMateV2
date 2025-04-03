@@ -53,37 +53,44 @@ struct TaskDetailView: View {
                 
                 Divider()
                 
-                HStack {
-                    Text("Waktu Tugas:")
-                        .font(.headline)
-                    
-                    Button(action: {
-                        withAnimation {
-                            isRescheduling.toggle()
-                        }
-                    }) {
-                        Text("\(formattedTime(date: selectedDate))")
-                            .font(.title2)
-                            .fontWeight(.semibold)
-                            .foregroundColor(.blue)
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
-                    }
-                    
-                    Text("Pilih Kategori:")
-                        .font(.headline)
-                    Picker("Kategori", selection: $selectedCategory) {
-                        ForEach(categories, id: \.self) { category in
-                            Text(category).tag(category)
+//                VStack(alignment: .leading){
+                    HStack{
+                        Text("Waktu Tugas: ")
+                            .font(.headline)
+                        
+                        Button(action: {
+                            withAnimation {
+                                isRescheduling.toggle()
+                            }
+                        }) {
+                            Text("\(formattedTime(date: selectedDate))")
+                                .font(.headline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.blue)
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
                         }
                     }
-                    .pickerStyle(MenuPickerStyle())
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(10)
                     
-                }
+                    HStack{
+                        Text("Pilih Kategori:")
+                            .font(.headline)
+//                            .frame(maxWidth: 100)
+                        Picker("Kategori", selection: $selectedCategory) {
+                            ForEach(categories, id: \.self) { category in
+                                Text(category).tag(category)
+                                    .font(.headline)
+                                
+                            }
+                        }
+                        .pickerStyle(MenuPickerStyle())
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(10)
+                    }
+                    
+//                }
                 
                 
                 if isRescheduling {
@@ -116,7 +123,7 @@ struct TaskDetailView: View {
                                     .foregroundColor(isCompleted ? .green : .gray)
                                     .font(.title)
                                 
-                                Text(isCompleted ? "✅ Selesai" : "⏳ Belum Selesai")
+                                Text(isCompleted ? "Selesai" : "Belum Selesai")
                                     .font(.headline)
                                     .foregroundColor(isCompleted ? .green : .red)
                             }
