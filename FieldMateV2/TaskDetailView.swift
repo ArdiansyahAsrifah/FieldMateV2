@@ -204,7 +204,7 @@ struct TaskDetailView: View {
     
     func startLiveActivity(task: CalendarTask) {
         let attributes = FieldMateLiveActivityAttributes(taskID: task.id.uuidString)
-        let state = FieldMateLiveActivityAttributes.ContentState(
+        let initialState = FieldMateLiveActivityAttributes.ContentState(
             taskTitle: task.title,
             taskTime: formattedTime(date: task.startTime),
             taskLocation: task.description
@@ -213,7 +213,8 @@ struct TaskDetailView: View {
         do {
             let activity = try Activity<FieldMateLiveActivityAttributes>.request(
                 attributes: attributes,
-                contentState: state,
+//                contentState: state,
+                content: .init(state: initialState, staleDate: nil),
                 pushType: nil
             )
             print("✅ Live Activity dimulai: \(activity.id)")
