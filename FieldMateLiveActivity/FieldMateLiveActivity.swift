@@ -22,11 +22,11 @@ struct FieldMateLiveActivity: Widget {
                 Text("\(context.state.taskTitle)   |   ⏰ \(context.state.taskTime)")
                     .font(.title2)
                     .bold()
-                    .foregroundColor(.white)
+                    .foregroundColor(.black)
 
                 Text(context.state.taskLocation)
-                    .font(.caption)
-                    .fontWeight(.bold)
+                    .font(.subheadline)
+                    .fontWeight(.regular)
                     .foregroundColor(.gray)
             }
             .padding()
