@@ -17,7 +17,7 @@ struct CalendarView: View {
                 Color.appBackground.ignoresSafeArea()
                 
                 VStack(spacing: 16) {
-                    Header(isShowingEventModal: $isShowingEventModal)
+//                    Header(isShowingEventModal: $isShowingEventModal)
                     
                     WeekView(selectedDate: $selectedDate)
                         .padding(.bottom, 4)

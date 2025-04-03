@@ -73,7 +73,7 @@ extension CalendarTask {
             
             CalendarTask(
                 title: "🚪 Pintu Utama Rusak",
-                description: "Purwadika School",
+                description: "Purwadhika School",
                 startTime: time(hour: 13),
                 duration: 3600,
                 color: .appPurple
