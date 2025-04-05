@@ -79,12 +79,12 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		41DCB6A22D9E71AC00B62BBB /* Exceptions for "FieldMateLiveActivity" folder in "FieldMateV2" target */ = {
+		41DCB6A72DA1657B00B62BBB /* Exceptions for "FieldMateV2" folder in "FieldMateLiveActivityExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				" FieldMateLiveActivityAttributes.swift",
+				"Data/ FieldMateLiveActivityAttributes.swift",
 			);
-			target = A58BBE2E2D9445BE007EEACE /* FieldMateV2 */;
+			target = A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */;
 		};
 		A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
@@ -108,6 +108,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */,
+				41DCB6A72DA1657B00B62BBB /* Exceptions for "FieldMateV2" folder in "FieldMateLiveActivityExtension" target */,
 			);
 			path = FieldMateV2;
 			sourceTree = "<group>";
@@ -125,7 +126,6 @@
 		A58BBE7F2D945BBF007EEACE /* FieldMateLiveActivity */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				41DCB6A22D9E71AC00B62BBB /* Exceptions for "FieldMateLiveActivity" folder in "FieldMateV2" target */,
 				A58BBE932D945BBF007EEACE /* Exceptions for "FieldMateLiveActivity" folder in "FieldMateLiveActivityExtension" target */,
 			);
 			path = FieldMateLiveActivity;
