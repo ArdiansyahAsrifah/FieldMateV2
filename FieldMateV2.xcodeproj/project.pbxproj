@@ -82,6 +82,7 @@
 		41DCB6A72DA1657B00B62BBB /* Exceptions for "FieldMateV2" folder in "FieldMateLiveActivityExtension" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				ColorTheme.swift,
 				"Data/ FieldMateLiveActivityAttributes.swift",
 				Views/LiveActivityView.swift,
 			);

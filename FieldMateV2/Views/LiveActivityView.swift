@@ -22,6 +22,7 @@ struct LiveActivityContent: View {
             TaskProgressBar(taskTimes: contentState.taskListTimes)
         }
         .padding()
+        .padding(.bottom, 10)
     }
 }
 
@@ -65,40 +66,82 @@ struct NextTaskView: View {
 
 struct TaskProgressBar: View {
     let taskTimes: [String]
+    let startHour = 8
+    let endHour = 17
+    
+    @State private var currentTimeFraction: CGFloat = 0.0
+    
+    let timer = Timer.publish(every:60, on: .main, in: .common).autoconnect()
     
     var body: some View {
-        VStack(spacing: 4) {
-            HStack {
-                ForEach(0..<taskTimes.count, id: \.self) { index in
-                    Circle()
-//                        .fill(Color.white)
-                        .frame(width: 10, height: 10)
-                    if index < taskTimes.count - 1 {
-                        Spacer()
+        VStack {
+            GeometryReader { geometry in
+                let totalWidth = geometry.size.width
+                
+                ZStack(alignment: .leading) {
+                    Rectangle()
+                        .frame(height: 8)
+                        .frame(maxWidth: .infinity)
+                        .cornerRadius(4)
+                        .position(x: totalWidth/2, y: 20)
+                    
+                    ForEach(taskTimes, id: \.self) { time in
+                        if let fraction = timeFraction(for: time) {
+                            Circle()
+                                .fill(fraction > currentTimeFraction ? Color.blue : Color.gray)
+                                .frame(width: 15, height: 15)
+                                .position(x: totalWidth * fraction, y: 20)
+                            if fraction > currentTimeFraction {
+                                Text(time)
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .position(x: totalWidth * fraction, y: 48)
+                            }
+                        }
                     }
+                    
+                    Text("⚙️")
+                        .font(.system(size:35, weight:.regular, design:.default))
+                        .position(x: totalWidth * currentTimeFraction, y: 20)
+                        .animation(.linear(duration: 0.5), value: currentTimeFraction)
+                }
+                .onReceive(timer) { _ in
+                    updateCurrentTimeFraction(totalWidth: totalWidth)
+                }
+                .onAppear {
+                    updateCurrentTimeFraction(totalWidth: totalWidth)
                 }
             }
-            .frame(maxWidth: .infinity)
-            .overlay(
-                Rectangle()
-//                    .fill(Color.white)
-                    .frame(height: 2)
-                    .padding(.horizontal, 5),
-                alignment: .center
-            )
-            
-            HStack {
-                ForEach(taskTimes, id: \.self) { time in
-                    Text(time)
-                        .font(.caption2)
-//                        .foregroundColor(.white)
-                    if time != taskTimes.last {
-                        Spacer()
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: 40)
+        .frame(maxWidth: .infinity, maxHeight: 60)
+        .padding(.horizontal, 25)
+        .padding(.bottom, 30)
     }
+    func timeFraction(for time: String) -> CGFloat? {
+        let components = time.split(separator: ":")
+        guard components.count == 2,
+              let hour = Double(components[0]),
+              let minute = Double(components[1]) else { return nil }
+        
+        let totalMinutes = hour * 60 + minute
+        let startMinutes = Double(startHour * 60)
+        let endMinutes = Double(endHour * 60)
+        
+        let fraction = (totalMinutes - startMinutes) / (endMinutes - startMinutes)
+        return CGFloat(min(max(fraction, 0), 1))
+    }
+    
+    func updateCurrentTimeFraction(totalWidth: CGFloat) {
+            let now = Date()
+            let calendar = Calendar.current
+            let hour = Double(calendar.component(.hour, from: now))
+            let minute = Double(calendar.component(.minute, from: now))
+            let totalNow = hour * 60 + minute
+            
+            let startMinutes = Double(startHour * 60)
+            let endMinutes = Double(endHour * 60)
+            
+            let fraction = (totalNow - startMinutes) / (endMinutes - startMinutes)
+            currentTimeFraction = CGFloat(min(max(fraction, 0), 1))
+        }
 }
