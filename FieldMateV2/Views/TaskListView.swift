@@ -42,6 +42,7 @@ struct TaskListView: View {
                     .font(.callout)
                     .foregroundColor(.appTextSecondary)
             }
+            .padding(.bottom, 20)
             GeometryReader { geometry in
                 ScrollViewReader { scrollProxy in
                     ScrollView(.vertical, showsIndicators: false) {
@@ -63,7 +64,7 @@ struct TaskListView: View {
                             }
                         }
 //                        .frame(minHeight: geometry.size.height)
-                        .padding(.vertical, 22)
+//                        .padding(.vertical, 22)
                     }
                     .onAppear {
                         if !initialScrollPerformed, let firstTaskHour = taskHours.first {
