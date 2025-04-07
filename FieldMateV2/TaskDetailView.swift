@@ -18,7 +18,7 @@ struct TaskDetailView: View {
     @State private var selectedCategory: String = "AC"
     @State private var isCompleted: Bool = false
 
-    let categories = ["AC", "Water Sprinkle", "Fire Alarm", "Lamp"]
+    let categories = ["AC", "Preventif Lift", "Pintu Utama Rusak", "Flush Toilet" ,  "Penggantian Lampu"]
 //    @State private var formResponses: [String: String] = [:]
 //    @State private var filledTable: [(String, String, String)] = []
     @State private var checkRows: [CheckRow] = []
@@ -184,12 +184,14 @@ struct TaskDetailView: View {
         switch category {
         case "AC":
             return [("Filter", "Baik", "Tidak Ada"), ("Freon", "Baik", "Tidak Ada"), ("Kompresor", "Baik", "Tidak Ada")]
-        case "Water Sprinkle":
-            return [("Pompa", "Baik", "Tidak Ada"), ("Nozzle", "Baik", "Tidak Ada"), ("Pipa", "Baik", "Tidak Ada")]
-        case "Fire Alarm":
-            return [("Sensor", "Baik", "Tidak Ada"), ("Sirine", "Baik", "Tidak Ada"), ("Panel", "Baik", "Tidak Ada")]
-        case "Lamp":
-            return [("Lampu LED", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada"), ("Sakelar", "Baik", "Tidak Ada")]
+        case "Preventif Lift":
+            return [("Sensor Pintu", "Baik", "Tidak Ada"), ("Motor", "Baik", "Tidak Ada"), ("Katrol", "Baik", "Tidak Ada")]
+        case "Pintu Utama Rusak":
+            return [("Sensor", "Baik", "Tidak Ada"), ("Akses keamanan", "Baik", "Tidak Ada"), ("Auto lock", "Baik", "Tidak Ada")]
+        case "Flush Toilet":
+            return [("Sumber Air", "Baik", "Tidak Ada"), ("Pompa Air", "Baik", "Tidak Ada"), ("Saluran Keluar", "Baik", "Tidak Ada")]
+        case "Penggantian Lampu":
+            return [("Arus Listrik", "Baik", "Tidak Ada"), ("Bola Lampu", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada")]
         default:
             return nil
         }
