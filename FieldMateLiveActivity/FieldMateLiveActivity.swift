@@ -34,7 +34,7 @@ struct FieldMateLiveActivity: Widget {
                         .foregroundColor(.white)
                 }
             )
-            .contentMargins(.all, 20, for:.expanded)
+            .contentMargins(.all, 25, for:.expanded)
         }
     }
     

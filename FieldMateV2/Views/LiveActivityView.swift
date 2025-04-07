@@ -22,7 +22,7 @@ struct LiveActivityContent: View {
             TaskProgressBar(taskTimes: contentState.taskListTimes)
         }
         .padding()
-        .padding(.bottom, 10)
+        .padding(.bottom, 15)
     }
 }
 
@@ -30,11 +30,11 @@ struct LiveActivityHeaderView: View {
     let contentState: FieldMateLiveActivityAttributes.ContentState
     var body: some View {
         VStack(alignment: .leading){
-            Text("7 April 2025")
+            Text("FieldMate")
                 .font(.system(size: 18, weight: .bold, design: .default))
 //                .foregroundColor(.white)
                 .lineLimit(1)
-                .minimumScaleFactor(0.7)
+//                .minimumScaleFactor(0.7)
             Text("\(contentState.taskListTimes.count) Tugas Hari Ini")
                 .font(.system(size: 15, weight: .regular, design: .default))
 //                .foregroundColor(.white)
@@ -70,8 +70,12 @@ struct TaskProgressBar: View {
     let endHour = 17
     
     @State private var currentTimeFraction: CGFloat = 0.0
-    
     let timer = Timer.publish(every:60, on: .main, in: .common).autoconnect()
+    
+    var showLabels: Bool {
+            taskTimes.compactMap { timeFraction(for: $0) }
+                     .contains { $0 > currentTimeFraction }
+        }
     
     var body: some View {
         VStack {
@@ -113,9 +117,9 @@ struct TaskProgressBar: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: 60)
-        .padding(.horizontal, 25)
-        .padding(.bottom, 30)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 15)
+        .padding(.bottom, showLabels ? 25 : 10)
     }
     func timeFraction(for time: String) -> CGFloat? {
         let components = time.split(separator: ":")
