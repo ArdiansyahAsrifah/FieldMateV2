@@ -13,24 +13,27 @@ struct CalendarView: View {
     @State private var isAnimating = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.appBackground.ignoresSafeArea()
-                
-                VStack(spacing: 16) {
-//                    Header(isShowingEventModal: $isShowingEventModal)
-                    
-                    WeekView(selectedDate: $selectedDate)
-                        .padding(.bottom, 4)
-                    
-                    TaskListView(selectedDate: selectedDate)
-                }
-                .padding(.top)
-            }
-        }
+            NavigationView {
+                ZStack {
+                    Color.appBackground.ignoresSafeArea()
 
-                .padding()
-    }
+                    VStack(spacing: 0) {
+                        // Header(isShowingEventModal: $isShowingEventModal)
+
+
+                        WeekView(selectedDate: $selectedDate)
+                            .padding(.top, 200)
+                        
+                        Spacer()
+                        
+                        TaskListView(selectedDate: selectedDate)
+                            .padding(.bottom, -40)
+                    }
+
+                }
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
+        }
 }
 
 #Preview("Light Mode") {
