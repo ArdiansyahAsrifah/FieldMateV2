@@ -15,6 +15,7 @@ struct DayView: View {
     
     private var weekdayString: String {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "id_ID")
         formatter.dateFormat = "EEE"
         return formatter.string(from: date).uppercased()
     }

@@ -89,6 +89,7 @@ struct TaskDetailView: View {
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
+                        .environment(\.locale, Locale(identifier: "id_ID"))
                 }
                 
                 Divider()
@@ -164,7 +165,7 @@ struct TaskDetailView: View {
 
             
         }
-        .navigationTitle("Task Detail")
+        .navigationTitle("Detil Tugas")
     }
     
     

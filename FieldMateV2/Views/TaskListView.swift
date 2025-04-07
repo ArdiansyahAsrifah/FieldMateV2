@@ -63,7 +63,7 @@ struct TaskListView: View {
                             }
                         }
 //                        .frame(minHeight: geometry.size.height)
-                        .padding(.vertical, 16)
+                        .padding(.vertical, 22)
                     }
                     .onAppear {
                         if !initialScrollPerformed, let firstTaskHour = taskHours.first {
@@ -74,7 +74,7 @@ struct TaskListView: View {
                 }
             }
         }
-        .padding()
+        .padding(25)
         .background(
             ZStack {
                 Color.appContainer
@@ -87,6 +87,7 @@ struct TaskListView: View {
 
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "id_ID")
         formatter.dateFormat = "EEEE, d MMMM  yyyy"
         return formatter
     }()
