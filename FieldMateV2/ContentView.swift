@@ -35,6 +35,7 @@ struct CalendarView: View {
                         Spacer()
                         
                         TaskListView(selectedDate: selectedDate)
+                            .padding(.top, 8)
                             .padding(.bottom, -40)
                     }
 

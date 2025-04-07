@@ -71,7 +71,6 @@ struct CheckItemRow: View {
     
     var body: some View {
         HStack {
- 
             Text(checkName)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
@@ -103,15 +102,15 @@ struct CheckListTable: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             .padding(.vertical, 8)
-            Divider()
-            
+
             ForEach($rows) { $row in
+                Divider()
                 CheckItemRow(checkName: row.checkName,
                              condition: $row.condition,
                              action: $row.action)
-                Divider()
+                
             }
         }
-        .padding()
+//        .padding(10)
     }
 }

@@ -20,8 +20,6 @@ struct TaskDetailView: View {
     @State private var selectedTask: String
 
     let categories = ["AC", "Preventif Lift", "Pintu Utama Rusak", "Flush Toilet" ,  "Penggantian Lampu"]
-//    @State private var formResponses: [String: String] = [:]
-//    @State private var filledTable: [(String, String, String)] = []
     @State private var checkRows: [CheckRow] = []
     
     init(task: CalendarTask) {
@@ -65,7 +63,7 @@ struct TaskDetailView: View {
                         }
                     }
                     
-                    HStack{
+//                    HStack{
 //                        Text("Pilih Kategori:")
 //                            .font(.headline)
 ////                            .frame(maxWidth: 100)
@@ -80,7 +78,7 @@ struct TaskDetailView: View {
 //                        .padding()
 //                        .background(Color(.systemGray6))
 //                        .cornerRadius(10)
-                    }
+//                    }
                     
 //                }
                 
@@ -94,14 +92,14 @@ struct TaskDetailView: View {
                 }
                 
                 Divider()
-                
-                
-                
                       
                 // Pass binding of checkRows to the CheckListTable
                 if !checkRows.isEmpty {
                     CheckListTable(rows: $checkRows)
                 }
+                
+//                Divider()
+                
                 Button(action: {
                     isCompleted.toggle()
                 }) {
@@ -144,9 +142,6 @@ struct TaskDetailView: View {
                 }
                 .padding(.top, 10)
                 .disabled(!isCompleted)
-                
-                
-                
                 
 
             }
@@ -343,9 +338,8 @@ struct PDFPageView: View {
 }
 
 
-#Preview("Light Mode") {
-    CalendarView()
-        .preferredColorScheme(.light)
+#Preview {
+    TaskDetailView(task: CalendarTask.sampleTasks[0])
 }
 
 #Preview("Dark Mode") {
