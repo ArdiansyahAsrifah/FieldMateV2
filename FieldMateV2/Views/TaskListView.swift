@@ -89,7 +89,7 @@ struct TaskListView: View {
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "id_ID")
-        formatter.dateFormat = "EEEE, d MMMM  yyyy"
+        formatter.dateFormat = "EEEE, d MMMM yyyy"
         return formatter
     }()
 }
