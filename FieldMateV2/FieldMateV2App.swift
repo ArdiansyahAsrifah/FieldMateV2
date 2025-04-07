@@ -26,7 +26,8 @@ struct FieldMateApp: App {
         let initialState = FieldMateLiveActivityAttributes.ContentState(
             taskTitle: "Cek AC",
             taskTime: "09:30 AM",
-            taskLocation: "Apple Developer Academy"
+            taskLocation: "Apple Developer Academy",
+            taskListTimes: ["08:00", "09:30", "11:00", "14:00"]
         )
 
         do {

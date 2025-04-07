@@ -13,6 +13,7 @@ struct FieldMateLiveActivityAttributes: ActivityAttributes {
         var taskTitle: String
         var taskTime: String
         var taskLocation: String
+        var taskListTimes: [String]
     }
     
     var taskID: String

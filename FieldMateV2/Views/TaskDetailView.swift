@@ -207,7 +207,8 @@ struct TaskDetailView: View {
         let initialState = FieldMateLiveActivityAttributes.ContentState(
             taskTitle: task.title,
             taskTime: formattedTime(date: task.startTime),
-            taskLocation: task.description
+            taskLocation: task.description,
+            taskListTimes: ["09:00", "11:00", "14:00"]
         )
 
         do {
@@ -240,7 +241,8 @@ struct TaskDetailView: View {
                 await activity.update(using: FieldMateLiveActivityAttributes.ContentState(
                     taskTitle: "🔄 Updated: \(task.title)",
                     taskTime: formattedTime(date: task.startTime),
-                    taskLocation: task.description
+                    taskLocation: task.description,
+                    taskListTimes: ["09:00", "11:00", "14:00"]
                 ))
                 print("🔄 Live Activity diperbarui dengan konten baru!")
             }
