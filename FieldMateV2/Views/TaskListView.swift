@@ -31,7 +31,7 @@ struct TaskListView: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
+        VStack(alignment: .leading, spacing: 0) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(dateFormatter.string(from: selectedDate))
                     .font(.headline)
@@ -49,7 +49,7 @@ struct TaskListView: View {
                             ForEach(taskHours, id: \.self) { hour in
                                 HStack {
                                     Text("\(hour):00")
-                                        .frame(width: 50, alignment: .trailing)
+                                        .frame(width: 46, alignment: .trailing)
                                         .font(.headline)
                                         .foregroundColor(.gray)
 
@@ -59,10 +59,11 @@ struct TaskListView: View {
                                         }
                                     }
                                 }
-                                .padding(.vertical, 8)
+                                .padding(.vertical, 4)
                             }
                         }
-                        .frame(minHeight: geometry.size.height)
+//                        .frame(minHeight: geometry.size.height)
+                        .padding(.vertical, 16)
                     }
                     .onAppear {
                         if !initialScrollPerformed, let firstTaskHour = taskHours.first {
@@ -89,4 +90,8 @@ struct TaskListView: View {
         formatter.dateFormat = "EEEE, d MMMM  yyyy"
         return formatter
     }()
+}
+
+#Preview {
+    CalendarView()
 }

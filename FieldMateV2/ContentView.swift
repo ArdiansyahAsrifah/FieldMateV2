@@ -19,14 +19,13 @@ struct CalendarView: View {
 
                     VStack(spacing: 0) {
                         // Header(isShowingEventModal: $isShowingEventModal)
-
-
                         WeekView(selectedDate: $selectedDate)
-                            .padding(.top, 200)
+                            .padding(.top, 20)
                         
                         Spacer()
                         
                         TaskListView(selectedDate: selectedDate)
+                            .padding(.top, 8)
                             .padding(.bottom, -40)
                     }
 

@@ -35,3 +35,7 @@ struct TaskView: View {
         }
     }
 }
+
+#Preview {
+    TaskView(task: CalendarTask.sampleTasks[0])
+}
