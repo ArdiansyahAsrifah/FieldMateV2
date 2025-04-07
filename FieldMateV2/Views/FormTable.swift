@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ConditionField: View {
     let suggestions: [String] = [
-        "Good",
-        "Fair",
-        "Dirty",
-        "Worn",
-        "Clogged",
-        "Leaking"
+        "Baik",
+        "Normal",
+        "Kotor",
+        "Dipakai",
+        "Buntu",
+        "Bocor"
     ]
     
     @Binding var condition: String
@@ -28,7 +28,7 @@ struct ConditionField: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            TextField("Enter Condition", text: $condition)
+            TextField("Masukkan Tindakan", text: $condition)
                 .textFieldStyle(.roundedBorder)
                 .onChange(of: condition) { newValue in
                     showSuggestions = !newValue.isEmpty
@@ -78,7 +78,7 @@ struct CheckItemRow: View {
             ConditionField(condition: $condition)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            TextField("Enter Action", text: $action)
+            TextField("Masukkan Tindakan", text: $action)
                 .textFieldStyle(.roundedBorder)
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -92,13 +92,13 @@ struct CheckListTable: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text("Check List")
+                Text("Komponen")
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Condition")
+                Text("Kondisi")
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
-                Text("Action")
+                Text("Tindakan")
                     .bold()
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
