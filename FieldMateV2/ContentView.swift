@@ -15,14 +15,22 @@ struct CalendarView: View {
     var body: some View {
             NavigationView {
                 ZStack {
-                    Color.appBackground.ignoresSafeArea()
+                    AnimatedBackground()
+
 
                     VStack(spacing: 0) {
                         // Header(isShowingEventModal: $isShowingEventModal)
-
-
+//                        Spacer(minLength: 100)
+//                        Text("Hai Engineer!")
+//                            .bold()
+//                            .font(.title)
+//                            .padding(.leading, -150)
+//                            .foregroundColor(Color.white)
+                        
+ 
+                        
                         WeekView(selectedDate: $selectedDate)
-                            .padding(.top, 200)
+                            .padding(.top, 140)
                         
                         Spacer()
                         

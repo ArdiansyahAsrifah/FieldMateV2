@@ -39,7 +39,7 @@ struct DayView: View {
             return .white
         }
         if isToday {
-            return .appTeal
+            return .black
         }
         return isWeekend ? .appTextSecondary : .appTextPrimary
     }
@@ -67,7 +67,7 @@ struct DayView: View {
         .padding(.vertical, 8)
         .background(
             ZStack {
-                Color(isSelected ? Color.appTeal : Color.appContainer)
+                Color(isSelected ? Color.black : Color.appContainer)
                 RoundedRectangle(cornerRadius: 10)
                     .stroke(borderColor, lineWidth: isToday ? 2 : 1)
             }
