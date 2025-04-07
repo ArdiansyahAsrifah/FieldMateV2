@@ -311,12 +311,29 @@ struct PDFPageView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
+                .padding(.leading, -280)
             
             Text(taskDescription)
                 .font(.body)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
+                .padding(.leading, -300)
+            
+            ForEach(data.sorted { $0.0 < $1.0 }, id: \.0) { item in
+                HStack {
+                    Text(item.0)
+                        .bold()
+                        .frame(width: 180)
+                    Text(item.1)
+                        .frame(maxWidth: .infinity)
+                    Text(item.2)
+                        .frame(maxWidth: .infinity)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+            }
             
             Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
                 .font(.headline)
@@ -325,19 +342,9 @@ struct PDFPageView: View {
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
             
-            ForEach(data.sorted { $0.0 < $1.0 }, id: \.0) { item in
-                HStack {
-                    Text(item.0)
-                        .bold()
-                        .frame(width: 180, alignment: .leading)
-                    Text(item.1)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-            }
             Spacer()
+            
+            
         }
         .padding()
     }
