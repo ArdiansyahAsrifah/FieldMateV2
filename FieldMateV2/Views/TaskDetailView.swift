@@ -17,6 +17,7 @@ struct TaskDetailView: View {
     @State private var isRescheduling = false
     @State private var selectedCategory: String = "AC"
     @State private var isCompleted: Bool = false
+    @State private var selectedTask: String
 
     let categories = ["AC", "Preventif Lift", "Pintu Utama Rusak", "Flush Toilet" ,  "Penggantian Lampu"]
 //    @State private var formResponses: [String: String] = [:]
@@ -26,6 +27,7 @@ struct TaskDetailView: View {
     init(task: CalendarTask) {
         self.task = task
         _selectedDate = State(initialValue: task.startTime)
+        _selectedTask = State(initialValue: task.title)
     }
     
     var body: some View {
@@ -40,16 +42,6 @@ struct TaskDetailView: View {
                     .font(.body)
                     .foregroundColor(.gray)
                 
-//                Button(action: {
-//                    startLiveActivity(task: task)
-//                }) {
-//                    Text("Mulai Live Activity")
-//                        .frame(maxWidth: .infinity)
-//                        .padding()
-//                        .background(Color.green)
-//                        .foregroundColor(.white)
-//                        .cornerRadius(10)
-//                }
                 
                 Divider()
                 
@@ -74,20 +66,20 @@ struct TaskDetailView: View {
                     }
                     
                     HStack{
-                        Text("Pilih Kategori:")
-                            .font(.headline)
-//                            .frame(maxWidth: 100)
-                        Picker("Kategori", selection: $selectedCategory) {
-                            ForEach(categories, id: \.self) { category in
-                                Text(category).tag(category)
-                                    .font(.headline)
-                                
-                            }
-                        }
-                        .pickerStyle(MenuPickerStyle())
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
+//                        Text("Pilih Kategori:")
+//                            .font(.headline)
+////                            .frame(maxWidth: 100)
+//                        Picker("Kategori", selection: $selectedCategory) {
+//                            ForEach(categories, id: \.self) { category in
+//                                Text(category).tag(category)
+//                                    .font(.headline)
+//                                
+//                            }
+//                        }
+//                        .pickerStyle(MenuPickerStyle())
+//                        .padding()
+//                        .background(Color(.systemGray6))
+//                        .cornerRadius(10)
                     }
                     
 //                }
@@ -160,14 +152,14 @@ struct TaskDetailView: View {
             }
             .padding()
             .onAppear {
-                if let tableData = getTableData(for: selectedCategory), checkRows.isEmpty {
+                if let tableData = getTableData(for: selectedTask), checkRows.isEmpty {
                     // Initialize checkRows once when the view appears
                     self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
                         CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
                     }
                 }
             }
-            .onChange(of: selectedCategory) { newCategory in
+            .onChange(of: selectedTask) { newCategory in
                 if let tableData = getTableData(for: newCategory) {
                     self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
                         CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
@@ -187,17 +179,17 @@ struct TaskDetailView: View {
         return formatter.string(from: date)
     }
     
-    func getTableData(for category: String) -> [(String, String, String)]? {
-        switch category {
-        case "AC":
+    func getTableData(for selectedTask: String) -> [(String, String, String)]? {
+        switch task.title {
+        case "⚙️ Cek AC":
             return [("Filter", "Baik", "Tidak Ada"), ("Freon", "Baik", "Tidak Ada"), ("Kompresor", "Baik", "Tidak Ada")]
-        case "Preventif Lift":
+        case "🚡 Preventif Lift":
             return [("Sensor Pintu", "Baik", "Tidak Ada"), ("Motor", "Baik", "Tidak Ada"), ("Katrol", "Baik", "Tidak Ada")]
-        case "Pintu Utama Rusak":
+        case "🚪 Pintu Utama Rusak":
             return [("Sensor", "Baik", "Tidak Ada"), ("Akses keamanan", "Baik", "Tidak Ada"), ("Auto lock", "Baik", "Tidak Ada")]
-        case "Flush Toilet":
+        case "🚽 Flush Toilet":
             return [("Sumber Air", "Baik", "Tidak Ada"), ("Pompa Air", "Baik", "Tidak Ada"), ("Saluran Keluar", "Baik", "Tidak Ada")]
-        case "Penggantian Lampu":
+        case "🛠️ Penggantian Lampu":
             return [("Arus Listrik", "Baik", "Tidak Ada"), ("Bola Lampu", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada")]
         default:
             return nil
@@ -311,12 +303,29 @@ struct PDFPageView: View {
                 .font(.title2)
                 .fontWeight(.semibold)
                 .multilineTextAlignment(.center)
+                .padding(.leading, -280)
             
             Text(taskDescription)
                 .font(.body)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)
+                .padding(.leading, -300)
+            
+            ForEach(data.sorted { $0.0 < $1.0 }, id: \.0) { item in
+                HStack {
+                    Text(item.0)
+                        .bold()
+                        .frame(width: 180)
+                    Text(item.1)
+                        .frame(maxWidth: .infinity)
+                    Text(item.2)
+                        .frame(maxWidth: .infinity)
+                }
+                .padding()
+                .background(Color(.systemGray6))
+                .cornerRadius(8)
+            }
             
             Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
                 .font(.headline)
@@ -325,19 +334,9 @@ struct PDFPageView: View {
                 .background(Color(.systemGray6))
                 .cornerRadius(10)
             
-            ForEach(data.sorted { $0.0 < $1.0 }, id: \.0) { item in
-                HStack {
-                    Text(item.0)
-                        .bold()
-                        .frame(width: 180, alignment: .leading)
-                    Text(item.1)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(8)
-            }
             Spacer()
+            
+            
         }
         .padding()
     }
