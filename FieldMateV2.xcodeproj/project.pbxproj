@@ -83,6 +83,7 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				"Data/ FieldMateLiveActivityAttributes.swift",
+				Views/LiveActivityView.swift,
 			);
 			target = A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */;
 		};
