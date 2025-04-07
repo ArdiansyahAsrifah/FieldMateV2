@@ -86,7 +86,7 @@ struct TaskListView: View {
 
     var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        formatter.dateFormat = "EEEE, d MMMM  yyyy"
         return formatter
     }()
 }

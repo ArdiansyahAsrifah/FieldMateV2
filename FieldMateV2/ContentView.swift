@@ -10,6 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     @State private var isShowingEventModal = false
     @State private var selectedDate = Date()
+    @State private var isAnimating = false
     
     var body: some View {
         NavigationView {
@@ -27,6 +28,8 @@ struct CalendarView: View {
                 .padding(.top)
             }
         }
+
+                .padding()
     }
 }
 
