@@ -347,3 +347,8 @@ struct PDFPageView: View {
     CalendarView()
         .preferredColorScheme(.light)
 }
+
+#Preview("Dark Mode") {
+    CalendarView()
+        .preferredColorScheme(.dark)
+}
