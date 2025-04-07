@@ -64,7 +64,7 @@ struct WeekView: View {
                     HStack(spacing: 4) {
                         Image(systemName: "calendar")
                             .font(.system(size: 12))
-                        Text("Minggu Ini !")
+                        Text("Minggu Ini")
                             .font(.subheadline)
                     }
                     .padding(8)

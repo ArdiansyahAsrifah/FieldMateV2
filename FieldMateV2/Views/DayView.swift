@@ -41,7 +41,7 @@ struct DayView: View {
         if isToday {
             return .appTeal
         }
-        return isWeekend ? .appTextPrimary : .appTextSecondary
+        return isWeekend ? .appTextSecondary : .appTextPrimary
     }
     
     private var borderColor: Color {

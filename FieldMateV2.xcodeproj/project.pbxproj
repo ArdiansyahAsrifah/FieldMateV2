@@ -79,6 +79,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		41DCB6A72DA1657B00B62BBB /* Exceptions for "FieldMateV2" folder in "FieldMateLiveActivityExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Data/ FieldMateLiveActivityAttributes.swift",
+			);
+			target = A58BBE782D945BBE007EEACE /* FieldMateLiveActivityExtension */;
+		};
 		A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -101,6 +108,7 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				A58BBE5D2D944616007EEACE /* Exceptions for "FieldMateV2" folder in "FieldMateV2" target */,
+				41DCB6A72DA1657B00B62BBB /* Exceptions for "FieldMateV2" folder in "FieldMateLiveActivityExtension" target */,
 			);
 			path = FieldMateV2;
 			sourceTree = "<group>";
@@ -546,7 +554,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FieldMateV2/Preview Content\"";
-				DEVELOPMENT_TEAM = V2R2B23AM7;
+				DEVELOPMENT_TEAM = 2CXYFC5LAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FieldMateV2/Info.plist;
@@ -576,7 +584,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FieldMateV2/Preview Content\"";
-				DEVELOPMENT_TEAM = V2R2B23AM7;
+				DEVELOPMENT_TEAM = 2CXYFC5LAK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FieldMateV2/Info.plist;
@@ -677,7 +685,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V2R2B23AM7;
+				DEVELOPMENT_TEAM = 2CXYFC5LAK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FieldMateLiveActivity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FieldMateLiveActivity;
@@ -704,7 +712,7 @@
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V2R2B23AM7;
+				DEVELOPMENT_TEAM = 2CXYFC5LAK;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FieldMateLiveActivity/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FieldMateLiveActivity;

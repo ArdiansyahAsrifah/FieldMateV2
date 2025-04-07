@@ -7,35 +7,6 @@
 
 import SwiftUI
 
-struct TaskView: View {
-    let task: CalendarTask
-    
-    var body: some View {
-        NavigationLink(destination: TaskDetailView(task: task)) {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 8) {
-                    Text(task.title)
-                        .font(.subheadline)
-                        .fontWeight(.semibold)
-                        .foregroundColor(.appTextPrimary)
-                    
-                    Text(task.description)
-                        .font(.caption)
-                        .foregroundColor(.appTextSecondary)
-                }
-                Spacer()
-                
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.appContainer)
-                    .font(.system(size: 20))
-            }
-            .padding()
-            .background(task.color)
-            .cornerRadius(10)
-        }
-    }
-}
-
 struct CalendarTask: Identifiable {
     let id = UUID()
     let title: String
@@ -73,7 +44,7 @@ extension CalendarTask {
             
             CalendarTask(
                 title: "🚪 Pintu Utama Rusak",
-                description: "Purwadika School",
+                description: "Purwadhika School",
                 startTime: time(hour: 13),
                 duration: 3600,
                 color: .appPurple

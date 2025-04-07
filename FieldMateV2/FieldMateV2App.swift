@@ -23,7 +23,7 @@ struct FieldMateApp: App {
 
     private func startLiveActivity() {
         let attributes = FieldMateLiveActivityAttributes(taskID: "1234")
-        let state = FieldMateLiveActivityAttributes.ContentState(
+        let initialState = FieldMateLiveActivityAttributes.ContentState(
             taskTitle: "Cek AC",
             taskTime: "09:30 AM",
             taskLocation: "Apple Developer Academy"
@@ -32,7 +32,8 @@ struct FieldMateApp: App {
         do {
             activity = try Activity<FieldMateLiveActivityAttributes>.request(
                 attributes: attributes,
-                contentState: state,
+//                contentState: state,
+                content: .init(state: initialState, staleDate: nil),
                 pushType: nil
             )
             print("✅ Live Activity dimulai!")
