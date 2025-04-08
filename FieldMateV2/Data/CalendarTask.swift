@@ -59,7 +59,7 @@ extension CalendarTask {
             ),
             
             CalendarTask(
-                title: "🛠️ Penggantian Lampu ",
+                title: "🛠️ Penggantian Lampu",
                 description: "Koridor GOP 9",
                 startTime: time(hour: 17),
                 duration: 3600,
