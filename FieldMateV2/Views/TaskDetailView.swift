@@ -32,7 +32,19 @@ struct TaskDetailView: View {
     var body: some View {
         ScrollView {
             ZStack{
+                
                 AnimatedBackground()
+                    .ignoresSafeArea()
+                
+                
+                Image(task.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .opacity(0.2)
+                    .offset(x: 100, y: -200)
+                    .zIndex(1)
+                
                 VStack(alignment: .leading, spacing: 16) {
                     
                     VStack(alignment:.leading, spacing: 20){
@@ -340,12 +352,12 @@ struct PDFPageView: View {
                 .cornerRadius(8)
             }
             
-            Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
-                .font(.headline)
-                .foregroundColor(isCompleted ? .green : .red)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+//            Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
+//                .font(.headline)
+//                .foregroundColor(isCompleted ? .green : .red)
+//                .padding()
+//                .background(Color(.systemGray6))
+//                .cornerRadius(10)
             
             Spacer()
             
