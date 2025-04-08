@@ -19,27 +19,37 @@ struct TaskView: View {
                     Text(task.title)
                         .font(.subheadline)
                         .fontWeight(.semibold)
-                        .foregroundColor(colorScheme == .dark ? .black : .white)
+//                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .foregroundColor(.white)
                     
                     Text(task.description)
                         .font(.caption)
-                        .foregroundColor(colorScheme == .dark ? .black : .white)
+//                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                        .foregroundColor(.white)
                 }
                 Spacer()
                 
                 Image(systemName: "chevron.right")
 //                    .foregroundColor(.appContainer)
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
+//                    .foregroundColor(colorScheme == .dark ? .black : .white)
+                    .foregroundColor(.white)
                     .font(.system(size: 20))
             }
             .padding()
 //            .background(task.color)
             .background(
-                LinearGradient(
-                    gradient: Gradient(colors: [Color(hex: "#7AD0E7"), Color(hex: "#55ABFA")]),
-                        startPoint: .leading,
-                        endPoint: .trailing
-                )
+                Group {
+                    if colorScheme == .dark {
+                        AnimatedBackground()
+                    } else {
+//                        LinearGradient(
+//                            gradient: Gradient(colors: [Color(hex: "#7AD0E7"), Color(hex: "#55ABFA")]),
+//                            startPoint: .leading,
+//                            endPoint: .trailing
+//                        )
+                        AnimatedBackground()
+                    }
+                }
             )
             .cornerRadius(10)
         }
