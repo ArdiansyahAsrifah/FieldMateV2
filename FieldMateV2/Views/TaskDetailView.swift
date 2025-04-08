@@ -340,12 +340,12 @@ struct PDFPageView: View {
                 .cornerRadius(8)
             }
             
-            Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
-                .font(.headline)
-                .foregroundColor(isCompleted ? .green : .red)
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+//            Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
+//                .font(.headline)
+//                .foregroundColor(isCompleted ? .green : .red)
+//                .padding()
+//                .background(Color(.systemGray6))
+//                .cornerRadius(10)
             
             Spacer()
             
