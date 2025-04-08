@@ -17,6 +17,18 @@ struct CalendarView: View {
                 ZStack {
                     AnimatedBackground()
 
+                    HStack {
+                        Spacer()
+                        Image("engineer-05")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 300)
+                            .padding(.top, -480)
+                            .padding(.trailing, -20)
+                            .opacity(0.5)
+                            .zIndex(1)
+                    }
+                    
                     VStack(alignment: .leading, spacing: 0) {
                         if showGreeting {
                             VStack(alignment: .leading){
@@ -45,20 +57,21 @@ struct CalendarView: View {
                             .padding(.bottom, -40)
                     }
 
-                    // Add image overlay in top-right
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Image("engineer-05")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 300) // adjust size as needed
-                                .padding(.top, -90)
-                                .padding(.trailing, -30)
-                                .opacity(0.5)
-                        }
-                        Spacer()
-                    }
+//                    // Add image overlay in top-right
+//                    VStack {
+//                        HStack {
+//                            Spacer()
+//                            Image("engineer-05")
+//                                .resizable()
+//                                .scaledToFit()
+//                                .frame(width: 300)
+//                                .padding(.top, -90)
+//                                .padding(.trailing, -30)
+//                                .opacity(0.5)
+//                                .zIndex(1)
+//                        }
+//                        Spacer()
+//                    }
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
