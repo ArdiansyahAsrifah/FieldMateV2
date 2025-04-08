@@ -23,7 +23,6 @@ struct TaskListView: View {
         defaultHourSpacing * timeSlotScale
     }
 
-    // Filter hanya jam yang memiliki task
     private var taskHours: [Int] {
         let calendar = Calendar.current
         let hours = tasks.map { calendar.component(.hour, from: $0.startTime) }
@@ -63,8 +62,6 @@ struct TaskListView: View {
                                 .padding(.vertical, 4)
                             }
                         }
-//                        .frame(minHeight: geometry.size.height)
-//                        .padding(.vertical, 22)
                     }
                     .onAppear {
                         if !initialScrollPerformed, let firstTaskHour = taskHours.first {

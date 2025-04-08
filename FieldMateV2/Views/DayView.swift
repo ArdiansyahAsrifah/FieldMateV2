@@ -11,7 +11,7 @@ struct DayView: View {
     let date: Date
     let isSelected: Bool
 
-    @Environment(\.colorScheme) var colorScheme // 🌓 Tambahkan ini
+    @Environment(\.colorScheme) var colorScheme
 
     private let calendar = Calendar.current
 
@@ -39,7 +39,6 @@ struct DayView: View {
 
     private var textColor: Color {
         if isSelected {
-            // Jika dark mode dan dipilih, font-nya hitam
             return colorScheme == .dark ? .black : .white
         }
         if isToday {
@@ -71,8 +70,6 @@ struct DayView: View {
         .background(
             ZStack {
                 if isSelected {
-                    // 🟡 Kalau dipilih dan dark mode → putih
-                    // Kalau dipilih dan light mode → hitam
                     (colorScheme == .dark ? Color.white : Color.black)
                 } else {
                     Color.appContainer

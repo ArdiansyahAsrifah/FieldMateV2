@@ -42,7 +42,6 @@ struct TaskDetailView: View {
                     .scaledToFit()
                     .frame(width: 200)
                     .opacity(0.2)
-//                    .offset(x: 100, y: -200)
                     .padding(.top, -300)
                     .padding(.trailing, -200)
                     .zIndex(1)
@@ -88,26 +87,6 @@ struct TaskDetailView: View {
     
                         }
                         
-                        //                    HStack{
-                        //                        Text("Pilih Kategori:")
-                        //                            .font(.headline)
-                        ////                            .frame(maxWidth: 100)
-                        //                        Picker("Kategori", selection: $selectedCategory) {
-                        //                            ForEach(categories, id: \.self) { category in
-                        //                                Text(category).tag(category)
-                        //                                    .font(.headline)
-                        //
-                        //                            }
-                        //                        }
-                        //                        .pickerStyle(MenuPickerStyle())
-                        //                        .padding()
-                        //                        .background(Color(.systemGray6))
-                        //                        .cornerRadius(10)
-                        //                    }
-                        
-                        //                }
-                        
-                        
                         if isRescheduling {
                             DatePicker("Pilih Waktu", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
                                 .datePickerStyle(GraphicalDatePickerStyle())
@@ -120,45 +99,16 @@ struct TaskDetailView: View {
                     }
                     .padding(10)
                     
-                    //                Divider()
-                    // Pass binding of checkRows to the CheckListTable
                     if !checkRows.isEmpty {
                         VStack{
                             CheckListTable(rows: $checkRows)
                                 .padding(.bottom, 30)
                             
-//                            Button(action: {
-//                                isCompleted.toggle()
-//                            }) {
-//                                HStack {
-//                                    Spacer() // Memberikan ruang di kiri agar tombol tetap di tengah
-//                                    Button(action: {
-//                                        isCompleted.toggle()
-//                                    }) {
-//                                        HStack {
-//                                            Image(systemName: isCompleted ? "checkmark.square.fill" : "square")
-//                                                .foregroundColor(isCompleted ? .green : .gray)
-//                                                .font(.title)
-//                                            
-//                                            Text(isCompleted ? "Selesai" : "Belum Selesai")
-//                                                .font(.headline)
-//                                                .foregroundColor(isCompleted ? .green : .red)
-//                                        }
-//                                        .padding()
-//                                        .background(Color(.systemGray6))
-//                                        .cornerRadius(10)
-//                                    }
-//                                    Spacer() // Memberikan ruang di kanan agar tombol tetap di tengah
-//                                }
-//                            }
-//                            .padding()
-//                            .background(Color(.systemGray6))
-//                            .cornerRadius(10)
                             Button(action: {
                                 let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
                                 exportToPDF(category: selectedCategory, tableData: filledTable)
                             }) {
-                                Text("Export ke PDF")
+                                Text("export ke PDF")
                                     .frame(maxWidth: .infinity)
                                     .padding()
                                     .background(Color.blue)
@@ -166,7 +116,6 @@ struct TaskDetailView: View {
                                     .cornerRadius(10)
                             }
                             .padding(.top, 10)
-//                            .disabled(!isCompleted)
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 15)
@@ -174,23 +123,17 @@ struct TaskDetailView: View {
                         .cornerRadius(20)
                         
                     }
-                    
-                    
-                    
-                   
-                    
-                    
+                
                 }
                 .padding(20)
                 .onAppear {
                     if let tableData = getTableData(for: selectedTask), checkRows.isEmpty {
-                        // Initialize checkRows once when the view appears
                         self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
                             CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
                         }
                     }
                 }
-                .onChange(of: selectedTask) { newCategory in
+                .onChange(of: selectedTask) { _, newCategory in
                     if let tableData = getTableData(for: newCategory) {
                         self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
                             CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
@@ -200,9 +143,7 @@ struct TaskDetailView: View {
                 
             }
         }
-        .navigationTitle("Detil Tugas")
-//        .toolbarBackground(, for: .navigationBar)
-//        .toolbarBackgroundVisibility(., for: <#T##ToolbarPlacement...##ToolbarPlacement#>)
+        .navigationTitle("Detail Tugas")
     }
     
     
@@ -219,25 +160,19 @@ struct TaskDetailView: View {
         formatter.dateFormat = "EEEE, d MMMM yyyy"
         return formatter.string(from: date)
     }
-//    var dateFormatter: DateFormatter = {
-//        let formatter = DateFormatter()
-//        formatter.locale = Locale(identifier: "id_ID")
-//        formatter.dateFormat = "EEEE, d MMMM yyyy"
-//        return formatter
-//    }()
     
     func getTableData(for selectedTask: String) -> [(String, String, String)]? {
         switch task.title {
         case "Cek AC":
-            return [("Filter", "Baik", "Tidak Ada"), ("Freon", "Baik", "Tidak Ada"), ("Kompresor", "Baik", "Tidak Ada")]
+            return [("Filter", "baik", "tidak ada"), ("Freon", "baik", "tidak ada"), ("Kompresor", "baik", "tidak ada")]
         case "Preventif Lift":
-            return [("Sensor Pintu", "Baik", "Tidak Ada"), ("Motor", "Baik", "Tidak Ada"), ("Katrol", "Baik", "Tidak Ada")]
+            return [("Sensor Pintu", "baik", "tidak ada"), ("motor", "baik", "tidak ada"), ("Katrol", "baik", "tidak ada")]
         case "Pintu Utama Rusak":
-            return [("Sensor", "Baik", "Tidak Ada"), ("Akses keamanan", "Baik", "Tidak Ada"), ("Auto lock", "Baik", "Tidak Ada")]
+            return [("Sensor", "baik", "tidak ada"), ("Akses keamanan", "baik", "tidak ada"), ("Auto lock", "baik", "tidak ada")]
         case "Flush Toilet":
-            return [("Sumber Air", "Baik", "Tidak Ada"), ("Pompa Air", "Baik", "Tidak Ada"), ("Saluran Keluar", "Baik", "Tidak Ada")]
+            return [("Sumber Air", "baik", "tidak ada"), ("Pompa Air", "baik", "tidak ada"), ("Saluran Keluar", "baik", "tidak ada")]
         case "Penggantian Lampu":
-            return [("Arus Listrik", "Baik", "Tidak Ada"), ("Bola Lampu", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada")]
+            return [("Arus Listrik", "baik", "tidak ada"), ("Bola Lampu", "baik", "tidak ada"), ("Kabel", "baik", "tidak ada")]
         default:
             return nil
         }
@@ -279,35 +214,26 @@ struct TaskDetailView: View {
     func ActivityManually(task: CalendarTask) {
         Task {
             for activity in Activity<FieldMateLiveActivityAttributes>.activities {
-                await activity.update(using: FieldMateLiveActivityAttributes.ContentState(
+                let updatedState = FieldMateLiveActivityAttributes.ContentState(
                     taskTitle: "🔄 Updated: \(task.title)",
                     taskTime: formattedTime(date: task.startTime),
                     taskLocation: task.description,
                     taskListTimes: ["09:00", "11:00", "14:00"]
-                ))
+                )
+
+                let content = ActivityContent(state: updatedState, staleDate: nil)
+
+                await activity.update(content)
                 print("🔄 Live Activity diperbarui dengan konten baru!")
             }
         }
     }
-    
-    
-    
-    func stopLiveActivity() {
-        Task {
-            let activities = Activity<FieldMateLiveActivityAttributes>.activities
-            for activity in activities {
-                await activity.end(dismissalPolicy: .immediate)
-            }
-        }
-    }
-    
+
     func exportToPDF(category: String, tableData: [(String, String, String)]) {
-        //        let pdfDocument = PDFDocument()
         let pdfPage = PDFPageView(
             taskTitle: task.title,
             taskDescription: task.description,
             category: category,
-            //            data: formResponses,
             data: tableData,
             isCompleted: isCompleted
         )
@@ -373,14 +299,7 @@ struct PDFPageView: View {
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
             }
-            
-//            Text(isCompleted ? "✅ Status: Selesai" : "⏳ Status: Belum Selesai")
-//                .font(.headline)
-//                .foregroundColor(isCompleted ? .green : .red)
-//                .padding()
-//                .background(Color(.systemGray6))
-//                .cornerRadius(10)
-            
+
             Spacer()
             
             
@@ -392,4 +311,8 @@ struct PDFPageView: View {
 
 #Preview() {
     TaskDetailView(task: CalendarTask.sampleTasks[0])
+}
+
+#Preview() {
+    CalendarView()
 }

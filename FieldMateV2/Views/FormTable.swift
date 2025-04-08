@@ -30,10 +30,10 @@ struct ConditionField: View {
         VStack(alignment: .leading, spacing: 0) {
             TextField("Masukkan Tindakan", text: $condition)
                 .textFieldStyle(.roundedBorder)
-                .onChange(of: condition) { newValue in
+                .onChange(of: condition) { _, newValue in
                     showSuggestions = !newValue.isEmpty
                 }
-            
+
             if showSuggestions && !filteredSuggestions.isEmpty {
                 VStack(alignment: .leading, spacing: 0) {
                     ForEach(filteredSuggestions, id: \.self) { suggestion in
@@ -54,7 +54,6 @@ struct ConditionField: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
             }
         }
-//        .animation(.default, value: showSuggestions)
     }
 }
 
@@ -112,6 +111,5 @@ struct CheckListTable: View {
                 
             }
         }
-//        .padding(10)
     }
 }

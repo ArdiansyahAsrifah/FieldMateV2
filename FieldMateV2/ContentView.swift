@@ -20,13 +20,13 @@ struct CalendarView: View {
 
                     HStack {
                         Spacer()
-                        Image("engineer-05")
+                        Image("GearLogo")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 300)
                             .padding(.top, -480)
                             .padding(.trailing, -20)
-                            .opacity(0.5)
+                            .opacity(0.2)
                             .zIndex(1)
                     }
                     
@@ -57,22 +57,6 @@ struct CalendarView: View {
                             .padding(.top, 8)
                             .padding(.bottom, -40)
                     }
-
-//                    // Add image overlay in top-right
-//                    VStack {
-//                        HStack {
-//                            Spacer()
-//                            Image("engineer-05")
-//                                .resizable()
-//                                .scaledToFit()
-//                                .frame(width: 300)
-//                                .padding(.top, -90)
-//                                .padding(.trailing, -30)
-//                                .opacity(0.5)
-//                                .zIndex(1)
-//                        }
-//                        Spacer()
-//                    }
                 }
             }
             .toolbarBackground(.yellow)

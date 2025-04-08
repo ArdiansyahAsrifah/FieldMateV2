@@ -19,47 +19,37 @@ struct TaskView: View {
                     Text(task.title)
                         .font(.subheadline)
                         .fontWeight(.semibold)
-//                        .foregroundColor(colorScheme == .dark ? .black : .white)
                         .foregroundColor(.white)
                     
                     Text(task.description)
                         .font(.caption)
-//                        .foregroundColor(colorScheme == .dark ? .black : .white)
+
                         .foregroundColor(.white)
                 }
                 Spacer()
                 
                 Image(systemName: "chevron.right")
-//                    .foregroundColor(.appContainer)
-//                    .foregroundColor(colorScheme == .dark ? .black : .white)
                     .foregroundColor(.white)
                     .font(.system(size: 20))
             }
             .padding()
-//            .background(task.color)
             .background(
                 Group {
                     if colorScheme == .dark {
                         AnimatedBackground()
                     } else {
-//                        LinearGradient(
-//                            gradient: Gradient(colors: [Color(hex: "#7AD0E7"), Color(hex: "#55ABFA")]),
-//                            startPoint: .leading,
-//                            endPoint: .trailing
-//                        )
                         AnimatedBackground()
                     }
                     
                     HStack {
-                                       Spacer()
-                                       Image(task.image)
-                                           .resizable()
-                                           .scaledToFit()
-                                           .frame(width: 100)
-                                           .opacity(0.15)
-                                           .padding(.trailing, 10)
-//                                           .offset(x: -25, y: -10)
-                                   }
+                        Spacer()
+                        Image(task.image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 100)
+                            .opacity(0.15)
+                            .padding(.trailing, 10)
+                    }
                 }
             )
             .cornerRadius(10)

@@ -30,14 +30,11 @@ struct LiveActivityHeaderView: View {
     let contentState: FieldMateLiveActivityAttributes.ContentState
     var body: some View {
         VStack(alignment: .leading){
-            Text("FieldMate")
-                .font(.system(size: 18, weight: .bold, design: .default))
-//                .foregroundColor(.white)
-                .lineLimit(1)
-//                .minimumScaleFactor(0.7)
+            Text("Tugas Selanjutnya →")
+                .font(.system(size: 20, weight: .bold, design: .default))
+                .minimumScaleFactor(0.7)
             Text("\(contentState.taskListTimes.count) Tugas Hari Ini")
                 .font(.system(size: 15, weight: .regular, design: .default))
-//                .foregroundColor(.white)
                 .minimumScaleFactor(0.7)
         }
     }
@@ -51,7 +48,6 @@ struct NextTaskView: View {
             Text(contentState.taskTitle)
                 .font(.subheadline)
                 .bold()
-//                .foregroundColor(.white)
             Text(contentState.taskLocation)
                 .font(.caption)
                 .foregroundColor(.orange)
@@ -59,7 +55,6 @@ struct NextTaskView: View {
             Text("⏰ \(contentState.taskTime) ")
                 .font(.caption)
                 .bold()
-//                .foregroundColor(.white.opacity(0.8))
         }
     }
 }
@@ -87,13 +82,13 @@ struct TaskProgressBar: View {
                         .frame(height: 8)
                         .frame(maxWidth: .infinity)
                         .cornerRadius(4)
-                        .position(x: totalWidth/2, y: 20)
+                        .position(x: 140, y: 20)
                     
                     ForEach(taskTimes, id: \.self) { time in
                         if let fraction = timeFraction(for: time) {
-                            Circle()
-                                .fill(fraction > currentTimeFraction ? Color.blue : Color.gray)
-                                .frame(width: 15, height: 15)
+                            Image(systemName: "arrowshape.right.circle.fill")
+                                .foregroundColor(fraction > currentTimeFraction ? .blue : .gray)
+                                .frame(width: 20, height: 20)
                                 .position(x: totalWidth * fraction, y: 20)
                             if fraction > currentTimeFraction {
                                 Text(time)
