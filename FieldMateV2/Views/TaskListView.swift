@@ -38,7 +38,7 @@ struct TaskListView: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.appTextPrimary)
 
-                Text("\(tasks.count) Tugas Menunggu Untuk Dikerjakan")
+                Text("\(tasks.count) tugas menunggu untuk dikerjakan")
                     .font(.callout)
                     .foregroundColor(.appTextSecondary)
             }

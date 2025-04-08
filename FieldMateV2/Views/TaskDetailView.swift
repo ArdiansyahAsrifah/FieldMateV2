@@ -63,23 +63,27 @@ struct TaskDetailView: View {
                         
                         
                         HStack{
-                            Text("Waktu Tugas: ")
+                            Text("\(formattedDateMonth(date: task.startTime))")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .fontWeight(.regular)
+                                .foregroundColor(.black)
+                                .padding(.top, 0)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 5)
+                                .background(colorScheme == .dark ? .black : .white)
+                                .cornerRadius(10)
                             
-                            Button(action: {
-                                withAnimation {
-                                    isRescheduling.toggle()
-                                }
-                            }) {
-                                Text("\(formattedTime(date: selectedDate))")
-                                    .font(.headline)
-                                    .fontWeight(.regular)
-                                    .foregroundColor(.blue)
-                                    .padding()
-                                    .background(colorScheme == .dark ? .black : .white)
-                                    .cornerRadius(10)
-                            }
+                            Text("\(formattedTime(date: selectedDate))")
+                                .font(.headline)
+                                .fontWeight(.regular)
+                                .foregroundColor(.black)
+                                .padding(.top, 0)
+                                .padding(.horizontal, 16)
+                                .padding(.vertical, 5)
+                                .background(colorScheme == .dark ? .black : .white)
+                                .cornerRadius(10)
+                            
+    
                         }
                         
                         //                    HStack{
@@ -205,6 +209,20 @@ struct TaskDetailView: View {
         formatter.dateFormat = "HH:mm"
         return formatter.string(from: date)
     }
+    
+    
+    func formattedDateMonth(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "id_ID")
+        formatter.dateFormat = "EEEE, d MMMM yyyy"
+        return formatter.string(from: date)
+    }
+//    var dateFormatter: DateFormatter = {
+//        let formatter = DateFormatter()
+//        formatter.locale = Locale(identifier: "id_ID")
+//        formatter.dateFormat = "EEEE, d MMMM yyyy"
+//        return formatter
+//    }()
     
     func getTableData(for selectedTask: String) -> [(String, String, String)]? {
         switch task.title {
