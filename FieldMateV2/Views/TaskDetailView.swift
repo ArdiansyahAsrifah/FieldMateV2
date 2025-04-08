@@ -42,7 +42,9 @@ struct TaskDetailView: View {
                     .scaledToFit()
                     .frame(width: 200)
                     .opacity(0.2)
-                    .offset(x: 100, y: -200)
+//                    .offset(x: 100, y: -200)
+                    .padding(.top, -300)
+                    .padding(.trailing, -200)
                     .zIndex(1)
                 
                 VStack(alignment: .leading, spacing: 16) {

@@ -58,7 +58,7 @@ struct TaskView: View {
                                            .frame(width: 100)
                                            .opacity(0.15)
                                            .padding(.trailing, 10)
-                                           .offset(x: -25, y: -10)
+//                                           .offset(x: -25, y: -10)
                                    }
                 }
             )
