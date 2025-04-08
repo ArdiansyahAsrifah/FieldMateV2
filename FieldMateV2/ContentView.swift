@@ -58,13 +58,13 @@ struct CalendarView: View {
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
-//            .onAppear {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
-//                    withAnimation{
-//                        showGreeting = false
-//                    }
-//                }
-//            }
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                    withAnimation{
+                        showGreeting = false
+                    }
+                }
+            }
         }
 }
 
