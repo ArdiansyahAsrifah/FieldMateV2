@@ -46,6 +46,7 @@ struct ConditionField: View {
                                 showSuggestions = false
                             }
                         Divider()
+                            .background(Color.white)
                     }
                 }
                 .background(Color(UIColor.systemBackground))

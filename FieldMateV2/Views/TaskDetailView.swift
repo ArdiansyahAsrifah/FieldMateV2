@@ -18,6 +18,7 @@ struct TaskDetailView: View {
     @State private var selectedCategory: String = "AC"
     @State private var isCompleted: Bool = false
     @State private var selectedTask: String
+    @Environment(\.colorScheme) var colorScheme
     
     let categories = ["AC", "Preventif Lift", "Pintu Utama Rusak", "Flush Toilet" ,  "Penggantian Lampu"]
     @State private var checkRows: [CheckRow] = []
@@ -40,7 +41,9 @@ struct TaskDetailView: View {
                                 .font(.system(size: 44, weight: .bold, design: .default))
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
+                                .foregroundColor(colorScheme == .dark ? .black : .white)
                             
+                    
                             Text(task.description)
                                 .font(.body)
                                 .foregroundColor(.white)
@@ -62,7 +65,7 @@ struct TaskDetailView: View {
                                     .fontWeight(.regular)
                                     .foregroundColor(.blue)
                                     .padding()
-                                    .background(Color(.systemGray6))
+                                    .background(colorScheme == .dark ? .black : .white)
                                     .cornerRadius(10)
                             }
                         }
@@ -106,56 +109,57 @@ struct TaskDetailView: View {
                             CheckListTable(rows: $checkRows)
                                 .padding(.bottom, 30)
                             
+//                            Button(action: {
+//                                isCompleted.toggle()
+//                            }) {
+//                                HStack {
+//                                    Spacer() // Memberikan ruang di kiri agar tombol tetap di tengah
+//                                    Button(action: {
+//                                        isCompleted.toggle()
+//                                    }) {
+//                                        HStack {
+//                                            Image(systemName: isCompleted ? "checkmark.square.fill" : "square")
+//                                                .foregroundColor(isCompleted ? .green : .gray)
+//                                                .font(.title)
+//                                            
+//                                            Text(isCompleted ? "Selesai" : "Belum Selesai")
+//                                                .font(.headline)
+//                                                .foregroundColor(isCompleted ? .green : .red)
+//                                        }
+//                                        .padding()
+//                                        .background(Color(.systemGray6))
+//                                        .cornerRadius(10)
+//                                    }
+//                                    Spacer() // Memberikan ruang di kanan agar tombol tetap di tengah
+//                                }
+//                            }
+//                            .padding()
+//                            .background(Color(.systemGray6))
+//                            .cornerRadius(10)
                             Button(action: {
-                                isCompleted.toggle()
+                                let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
+                                exportToPDF(category: selectedCategory, tableData: filledTable)
                             }) {
-                                HStack {
-                                    Spacer() // Memberikan ruang di kiri agar tombol tetap di tengah
-                                    Button(action: {
-                                        isCompleted.toggle()
-                                    }) {
-                                        HStack {
-                                            Image(systemName: isCompleted ? "checkmark.square.fill" : "square")
-                                                .foregroundColor(isCompleted ? .green : .gray)
-                                                .font(.title)
-                                            
-                                            Text(isCompleted ? "Selesai" : "Belum Selesai")
-                                                .font(.headline)
-                                                .foregroundColor(isCompleted ? .green : .red)
-                                        }
-                                        .padding()
-                                        .background(Color(.systemGray6))
-                                        .cornerRadius(10)
-                                    }
-                                    Spacer() // Memberikan ruang di kanan agar tombol tetap di tengah
-                                }
+                                Text("Export ke PDF")
+                                    .frame(maxWidth: .infinity)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
                             }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(10)
+                            .padding(.top, 10)
+//                            .disabled(!isCompleted)
                         }
                         .padding(.horizontal, 20)
                         .padding(.vertical, 15)
-                        .background(.white)
+                        .background(colorScheme == .dark ? .black : .white)
                         .cornerRadius(20)
                         
                     }
                     
                     
                     
-                    Button(action: {
-                        let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
-                        exportToPDF(category: selectedCategory, tableData: filledTable)
-                    }) {
-                        Text("Export ke PDF")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(isCompleted ? Color.blue : Color.gray)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                    }
-                    .padding(.top, 10)
-                    .disabled(!isCompleted)
+                   
                     
                     
                 }
@@ -352,11 +356,6 @@ struct PDFPageView: View {
 }
 
 
-#Preview {
+#Preview() {
     TaskDetailView(task: CalendarTask.sampleTasks[0])
-}
-
-#Preview("Dark Mode") {
-    CalendarView()
-        .preferredColorScheme(.dark)
 }
