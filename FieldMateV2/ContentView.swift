@@ -18,14 +18,6 @@ struct CalendarView: View {
                     AnimatedBackground()
 
                     VStack(alignment: .leading, spacing: 0) {
-                        // Header(isShowingEventModal: $isShowingEventModal)
-//                        Spacer(minLength: 100)
-//                        Text("Hai Engineer!")
-//                            .bold()
-//                            .font(.title)
-//                            .padding(.leading, -150)
-//                            .foregroundColor(Color.white)
-                        
                         if showGreeting {
                             VStack(alignment: .leading){
                                 Text("Hai Engineer!")
@@ -40,21 +32,33 @@ struct CalendarView: View {
                             .padding(.horizontal, 45)
                             .padding(.top, 40)
                             .padding(.bottom, 20)
-                            
                         }
- 
-                        
+
                         WeekView(selectedDate: $selectedDate)
                             .padding(.top, 20)
-                            .animation(.easeInOut(duration: 0.5), value:showGreeting)
-                        
+                            .animation(.easeInOut(duration: 0.5), value: showGreeting)
+
                         Spacer()
-                        
+
                         TaskListView(selectedDate: selectedDate)
                             .padding(.top, 8)
                             .padding(.bottom, -40)
                     }
 
+                    // Add image overlay in top-right
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Image("engineer-05")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300) // adjust size as needed
+                                .padding(.top, -90)
+                                .padding(.trailing, -30)
+                                .opacity(0.5)
+                        }
+                        Spacer()
+                    }
                 }
             }
             .navigationViewStyle(StackNavigationViewStyle())
@@ -62,7 +66,7 @@ struct CalendarView: View {
                 withAnimation{
                     showGreeting = true
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5){
                     withAnimation{
                         showGreeting = false
                     }
