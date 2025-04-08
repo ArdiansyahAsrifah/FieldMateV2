@@ -43,7 +43,7 @@ struct DayView: View {
             return colorScheme == .dark ? .black : .white
         }
         if isToday {
-            return .black
+            return .white
         }
         return isWeekend ? .appTextSecondary : .appTextPrimary
     }
