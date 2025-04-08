@@ -18,7 +18,7 @@ struct TaskDetailView: View {
     @State private var selectedCategory: String = "AC"
     @State private var isCompleted: Bool = false
     @State private var selectedTask: String
-
+    
     let categories = ["AC", "Preventif Lift", "Pintu Utama Rusak", "Flush Toilet" ,  "Penggantian Lampu"]
     @State private var checkRows: [CheckRow] = []
     
@@ -30,140 +30,153 @@ struct TaskDetailView: View {
     
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                
-                Text(task.title)
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                Text(task.description)
-                    .font(.body)
-                    .foregroundColor(.gray)
-                
-                
-                Divider()
-                
-//                VStack(alignment: .leading){
-                    HStack{
-                        Text("Waktu Tugas: ")
-                            .font(.headline)
+            ZStack{
+                AnimatedBackground()
+                VStack(alignment: .leading, spacing: 16) {
+                    
+                    VStack(alignment:.leading, spacing: 20){
+                        VStack(alignment: .leading){
+                            Text(task.title)
+                                .font(.system(size: 44, weight: .bold, design: .default))
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                            
+                            Text(task.description)
+                                .font(.body)
+                                .foregroundColor(.white)
+                        }
                         
-                        Button(action: {
-                            withAnimation {
-                                isRescheduling.toggle()
-                            }
-                        }) {
-                            Text("\(formattedTime(date: selectedDate))")
+                        
+                        HStack{
+                            Text("Waktu Tugas: ")
                                 .font(.headline)
-                                .fontWeight(.regular)
-                                .foregroundColor(.blue)
+                                .foregroundColor(.white)
+                            
+                            Button(action: {
+                                withAnimation {
+                                    isRescheduling.toggle()
+                                }
+                            }) {
+                                Text("\(formattedTime(date: selectedDate))")
+                                    .font(.headline)
+                                    .fontWeight(.regular)
+                                    .foregroundColor(.blue)
+                                    .padding()
+                                    .background(Color(.systemGray6))
+                                    .cornerRadius(10)
+                            }
+                        }
+                        
+                        //                    HStack{
+                        //                        Text("Pilih Kategori:")
+                        //                            .font(.headline)
+                        ////                            .frame(maxWidth: 100)
+                        //                        Picker("Kategori", selection: $selectedCategory) {
+                        //                            ForEach(categories, id: \.self) { category in
+                        //                                Text(category).tag(category)
+                        //                                    .font(.headline)
+                        //
+                        //                            }
+                        //                        }
+                        //                        .pickerStyle(MenuPickerStyle())
+                        //                        .padding()
+                        //                        .background(Color(.systemGray6))
+                        //                        .cornerRadius(10)
+                        //                    }
+                        
+                        //                }
+                        
+                        
+                        if isRescheduling {
+                            DatePicker("Pilih Waktu", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
+                                .datePickerStyle(GraphicalDatePickerStyle())
                                 .padding()
                                 .background(Color(.systemGray6))
                                 .cornerRadius(10)
+                                .environment(\.locale, Locale(identifier: "id_ID"))
                         }
+                        
                     }
+                    .padding(10)
                     
-//                    HStack{
-//                        Text("Pilih Kategori:")
-//                            .font(.headline)
-////                            .frame(maxWidth: 100)
-//                        Picker("Kategori", selection: $selectedCategory) {
-//                            ForEach(categories, id: \.self) { category in
-//                                Text(category).tag(category)
-//                                    .font(.headline)
-//                                
-//                            }
-//                        }
-//                        .pickerStyle(MenuPickerStyle())
-//                        .padding()
-//                        .background(Color(.systemGray6))
-//                        .cornerRadius(10)
-//                    }
-                    
-//                }
-                
-                
-                if isRescheduling {
-                    DatePicker("Pilih Waktu", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
-                        .datePickerStyle(GraphicalDatePickerStyle())
-                        .padding()
-                        .background(Color(.systemGray6))
-                        .cornerRadius(10)
-                        .environment(\.locale, Locale(identifier: "id_ID"))
-                }
-                
-                Divider()
-                      
-                // Pass binding of checkRows to the CheckListTable
-                if !checkRows.isEmpty {
-                    CheckListTable(rows: $checkRows)
-                }
-                
-//                Divider()
-                
-                Button(action: {
-                    isCompleted.toggle()
-                }) {
-                    HStack {
-                        Spacer() // Memberikan ruang di kiri agar tombol tetap di tengah
-                        Button(action: {
-                            isCompleted.toggle()
-                        }) {
-                            HStack {
-                                Image(systemName: isCompleted ? "checkmark.square.fill" : "square")
-                                    .foregroundColor(isCompleted ? .green : .gray)
-                                    .font(.title)
-                                
-                                Text(isCompleted ? "Selesai" : "Belum Selesai")
-                                    .font(.headline)
-                                    .foregroundColor(isCompleted ? .green : .red)
+                    //                Divider()
+                    // Pass binding of checkRows to the CheckListTable
+                    if !checkRows.isEmpty {
+                        VStack{
+                            CheckListTable(rows: $checkRows)
+                                .padding(.bottom, 30)
+                            
+                            Button(action: {
+                                isCompleted.toggle()
+                            }) {
+                                HStack {
+                                    Spacer() // Memberikan ruang di kiri agar tombol tetap di tengah
+                                    Button(action: {
+                                        isCompleted.toggle()
+                                    }) {
+                                        HStack {
+                                            Image(systemName: isCompleted ? "checkmark.square.fill" : "square")
+                                                .foregroundColor(isCompleted ? .green : .gray)
+                                                .font(.title)
+                                            
+                                            Text(isCompleted ? "Selesai" : "Belum Selesai")
+                                                .font(.headline)
+                                                .foregroundColor(isCompleted ? .green : .red)
+                                        }
+                                        .padding()
+                                        .background(Color(.systemGray6))
+                                        .cornerRadius(10)
+                                    }
+                                    Spacer() // Memberikan ruang di kanan agar tombol tetap di tengah
+                                }
                             }
                             .padding()
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
                         }
-                        Spacer() // Memberikan ruang di kanan agar tombol tetap di tengah
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 15)
+                        .background(.white)
+                        .cornerRadius(20)
+                        
+                    }
+                    
+                    
+                    
+                    Button(action: {
+                        let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
+                        exportToPDF(category: selectedCategory, tableData: filledTable)
+                    }) {
+                        Text("Export ke PDF")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(isCompleted ? Color.blue : Color.gray)
+                            .foregroundColor(.white)
+                            .cornerRadius(10)
+                    }
+                    .padding(.top, 10)
+                    .disabled(!isCompleted)
+                    
+                    
+                }
+                .padding(20)
+                .onAppear {
+                    if let tableData = getTableData(for: selectedTask), checkRows.isEmpty {
+                        // Initialize checkRows once when the view appears
+                        self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
+                            CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
+                        }
                     }
                 }
-
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(10)
+                .onChange(of: selectedTask) { newCategory in
+                    if let tableData = getTableData(for: newCategory) {
+                        self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
+                            CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
+                        }
+                    }
+                }
                 
-                Button(action: {
-                    let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
-                    exportToPDF(category: selectedCategory, tableData: filledTable)
-                }) {
-                    Text("Export ke PDF")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(isCompleted ? Color.blue : Color.gray)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
-                }
-                .padding(.top, 10)
-                .disabled(!isCompleted)
-                
-
             }
-            .padding()
-            .onAppear {
-                if let tableData = getTableData(for: selectedTask), checkRows.isEmpty {
-                    // Initialize checkRows once when the view appears
-                    self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
-                        CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
-                    }
-                }
-            }
-            .onChange(of: selectedTask) { newCategory in
-                if let tableData = getTableData(for: newCategory) {
-                    self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
-                        CheckRow(checkName: checkName, condition: defaultCondition, action: defaultAction)
-                    }
-                }
-            }
-
-            
         }
         .navigationTitle("Detil Tugas")
     }
@@ -177,15 +190,15 @@ struct TaskDetailView: View {
     
     func getTableData(for selectedTask: String) -> [(String, String, String)]? {
         switch task.title {
-        case "⚙️ Cek AC":
+        case "Cek AC":
             return [("Filter", "Baik", "Tidak Ada"), ("Freon", "Baik", "Tidak Ada"), ("Kompresor", "Baik", "Tidak Ada")]
-        case "🚡 Preventif Lift":
+        case "Preventif Lift":
             return [("Sensor Pintu", "Baik", "Tidak Ada"), ("Motor", "Baik", "Tidak Ada"), ("Katrol", "Baik", "Tidak Ada")]
-        case "🚪 Pintu Utama Rusak":
+        case "Pintu Utama Rusak":
             return [("Sensor", "Baik", "Tidak Ada"), ("Akses keamanan", "Baik", "Tidak Ada"), ("Auto lock", "Baik", "Tidak Ada")]
-        case "🚽 Flush Toilet":
+        case "Flush Toilet":
             return [("Sumber Air", "Baik", "Tidak Ada"), ("Pompa Air", "Baik", "Tidak Ada"), ("Saluran Keluar", "Baik", "Tidak Ada")]
-        case "🛠️ Penggantian Lampu":
+        case "Penggantian Lampu":
             return [("Arus Listrik", "Baik", "Tidak Ada"), ("Bola Lampu", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada")]
         default:
             return nil
@@ -200,11 +213,11 @@ struct TaskDetailView: View {
             taskLocation: task.description,
             taskListTimes: ["09:00", "11:00", "14:00"]
         )
-
+        
         do {
             let activity = try Activity<FieldMateLiveActivityAttributes>.request(
                 attributes: attributes,
-//                contentState: state,
+                //                contentState: state,
                 content: .init(state: initialState, staleDate: nil),
                 pushType: nil
             )
@@ -214,7 +227,7 @@ struct TaskDetailView: View {
         }
     }
     
-
+    
     
     func checkActiveLiveActivities() {
         let activities = Activity<FieldMateLiveActivityAttributes>.activities
@@ -223,8 +236,8 @@ struct TaskDetailView: View {
             print("🔍 Active Live Activity ID: \(activity.id)")
         }
     }
-
-
+    
+    
     func ActivityManually(task: CalendarTask) {
         Task {
             for activity in Activity<FieldMateLiveActivityAttributes>.activities {
@@ -238,9 +251,9 @@ struct TaskDetailView: View {
             }
         }
     }
-
-
-
+    
+    
+    
     func stopLiveActivity() {
         Task {
             let activities = Activity<FieldMateLiveActivityAttributes>.activities
@@ -251,12 +264,12 @@ struct TaskDetailView: View {
     }
     
     func exportToPDF(category: String, tableData: [(String, String, String)]) {
-//        let pdfDocument = PDFDocument()
+        //        let pdfDocument = PDFDocument()
         let pdfPage = PDFPageView(
             taskTitle: task.title,
             taskDescription: task.description,
             category: category,
-//            data: formResponses,
+            //            data: formResponses,
             data: tableData,
             isCompleted: isCompleted
         )

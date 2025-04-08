@@ -10,8 +10,7 @@ import SwiftUI
 struct CalendarView: View {
     @State private var isShowingEventModal = false
     @State private var selectedDate = Date()
-    @State private var isAnimating = false
-    @State private var showGreeting = true
+    @State private var showGreeting = false
     
     var body: some View {
             NavigationView {
@@ -32,15 +31,16 @@ struct CalendarView: View {
                                 Text("Hai Engineer!")
                                     .font(.system(size: 44, weight: .bold, design: .default))
                                     .foregroundColor(.white)
-                                    .transition(.opacity)
-                                Text("Kamu Punya 5 Tugas Hari Ini!")
+
+                                Text("Kamu Punya \(CalendarTask.sampleTasks.count) Tugas Hari Ini!")
                                     .font(.body)
                                     .foregroundColor(.white)
-                                    .transition(.opacity)
+
                             }
                             .padding(.horizontal, 45)
                             .padding(.top, 40)
                             .padding(.bottom, 20)
+                            
                         }
  
                         
@@ -59,6 +59,9 @@ struct CalendarView: View {
             }
             .navigationViewStyle(StackNavigationViewStyle())
             .onAppear {
+                withAnimation{
+                    showGreeting = true
+                }
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3){
                     withAnimation{
                         showGreeting = false
