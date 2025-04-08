@@ -27,7 +27,7 @@ extension CalendarTask {
         
         return [
             CalendarTask(
-                title: "⚙️ Cek AC",
+                title: "Cek AC",
                 description: "Apple Developer Academy",
                 startTime: time(hour: 9, minute: 30),
                 duration: 3600,
@@ -35,7 +35,7 @@ extension CalendarTask {
             ),
             
             CalendarTask(
-                title: "🚡 Preventif Lift",
+                title: "Preventif Lift",
                 description: "GOP 9 Ground Floor",
                 startTime: time(hour: 11),
                 duration: 1800,
@@ -43,7 +43,7 @@ extension CalendarTask {
             ),
             
             CalendarTask(
-                title: "🚪 Pintu Utama Rusak",
+                title: "Pintu Utama Rusak",
                 description: "Purwadhika School",
                 startTime: time(hour: 13),
                 duration: 3600,
@@ -51,7 +51,7 @@ extension CalendarTask {
             ),
             
             CalendarTask(
-                title: "🚽 Flush Toilet",
+                title: "Flush Toilet",
                 description: "GOP 9 Ground Floor",
                 startTime: time(hour: 15, minute: 30),
                 duration: 1800,
@@ -59,7 +59,7 @@ extension CalendarTask {
             ),
             
             CalendarTask(
-                title: "🛠️ Penggantian Lampu",
+                title: "Penggantian Lampu",
                 description: "Koridor GOP 9",
                 startTime: time(hour: 17),
                 duration: 3600,

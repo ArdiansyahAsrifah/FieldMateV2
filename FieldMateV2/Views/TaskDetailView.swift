@@ -177,15 +177,15 @@ struct TaskDetailView: View {
     
     func getTableData(for selectedTask: String) -> [(String, String, String)]? {
         switch task.title {
-        case "⚙️ Cek AC":
+        case "Cek AC":
             return [("Filter", "Baik", "Tidak Ada"), ("Freon", "Baik", "Tidak Ada"), ("Kompresor", "Baik", "Tidak Ada")]
-        case "🚡 Preventif Lift":
+        case "Preventif Lift":
             return [("Sensor Pintu", "Baik", "Tidak Ada"), ("Motor", "Baik", "Tidak Ada"), ("Katrol", "Baik", "Tidak Ada")]
-        case "🚪 Pintu Utama Rusak":
+        case "Pintu Utama Rusak":
             return [("Sensor", "Baik", "Tidak Ada"), ("Akses keamanan", "Baik", "Tidak Ada"), ("Auto lock", "Baik", "Tidak Ada")]
-        case "🚽 Flush Toilet":
+        case "Flush Toilet":
             return [("Sumber Air", "Baik", "Tidak Ada"), ("Pompa Air", "Baik", "Tidak Ada"), ("Saluran Keluar", "Baik", "Tidak Ada")]
-        case "🛠️ Penggantian Lampu":
+        case "Penggantian Lampu":
             return [("Arus Listrik", "Baik", "Tidak Ada"), ("Bola Lampu", "Baik", "Tidak Ada"), ("Kabel", "Baik", "Tidak Ada")]
         default:
             return nil
