@@ -46,10 +46,10 @@ struct WeekView: View {
                 Text("\(monthYearString(for: getDateForWeek(weekOffset)))")
                     .font(.title3)
                     .fontWeight(.bold)
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                 
                 Image(systemName: "chevron.down")
-                    .foregroundColor(.black)
+                    .foregroundColor(.white)
                     .frame(width: 40, height: 40)
                     .font(.system(size: 18))
                 
