@@ -49,6 +49,17 @@ struct TaskView: View {
 //                        )
                         AnimatedBackground()
                     }
+                    
+                    HStack {
+                                       Spacer()
+                                       Image(task.image)
+                                           .resizable()
+                                           .scaledToFit()
+                                           .frame(width: 100)
+                                           .opacity(0.15)
+                                           .padding(.trailing, 10)
+                                           .offset(x: -25, y: -10)
+                                   }
                 }
             )
             .cornerRadius(10)
