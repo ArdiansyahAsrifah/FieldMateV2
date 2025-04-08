@@ -195,6 +195,8 @@ struct TaskDetailView: View {
             }
         }
         .navigationTitle("Detil Tugas")
+//        .toolbarBackground(, for: .navigationBar)
+//        .toolbarBackgroundVisibility(., for: <#T##ToolbarPlacement...##ToolbarPlacement#>)
     }
     
     

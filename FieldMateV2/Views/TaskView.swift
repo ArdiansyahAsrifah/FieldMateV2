@@ -64,6 +64,7 @@ struct TaskView: View {
             )
             .cornerRadius(10)
         }
+        .toolbarBackground(.hidden)
     }
 }
 

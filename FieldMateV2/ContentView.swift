@@ -11,6 +11,7 @@ struct CalendarView: View {
     @State private var isShowingEventModal = false
     @State private var selectedDate = Date()
     @State private var showGreeting = false
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
             NavigationView {
@@ -74,7 +75,9 @@ struct CalendarView: View {
 //                    }
                 }
             }
+            .toolbarBackground(.yellow)
             .navigationViewStyle(StackNavigationViewStyle())
+            .accentColor(colorScheme == .dark ?.white : .black)
             .onAppear {
                 withAnimation{
                     showGreeting = true
@@ -88,13 +91,7 @@ struct CalendarView: View {
         }
 }
 
-#Preview("Light Mode") {
+#Preview {
     CalendarView()
         .preferredColorScheme(.light)
 }
-
-#Preview("Dark Mode") {
-    CalendarView()
-        .preferredColorScheme(.dark)
-}
-
