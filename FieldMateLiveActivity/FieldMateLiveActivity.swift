@@ -10,10 +10,10 @@ import WidgetKit
 import SwiftUI
 
 struct FieldMateLiveActivity: Widget {
+
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: FieldMateLiveActivityAttributes.self) { context in
             LiveActivityContent(contentState: context.state)
-                .activityBackgroundTint(Color.white.opacity(0.9))
         } dynamicIsland: { context in
             DynamicIsland(
                 expanded: {
