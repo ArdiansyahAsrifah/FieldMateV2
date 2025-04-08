@@ -14,6 +14,7 @@ struct CalendarTask: Identifiable {
     let startTime: Date
     let duration: TimeInterval
     let color: Color
+    let image: String
 }
 
 extension CalendarTask {
@@ -31,7 +32,8 @@ extension CalendarTask {
                 description: "Apple Developer Academy",
                 startTime: time(hour: 9, minute: 30),
                 duration: 3600,
-                color: .appOrange
+                color: .appOrange,
+                image: "aircon"
             ),
             
             CalendarTask(
@@ -39,7 +41,8 @@ extension CalendarTask {
                 description: "GOP 9 Ground Floor",
                 startTime: time(hour: 11),
                 duration: 1800,
-                color: .appTeal
+                color: .appTeal,
+                image: "elevator"
             ),
             
             CalendarTask(
@@ -47,7 +50,8 @@ extension CalendarTask {
                 description: "Purwadhika School",
                 startTime: time(hour: 13),
                 duration: 3600,
-                color: .appPurple
+                color: .appPurple,
+                image: "property"
             ),
             
             CalendarTask(
@@ -55,7 +59,8 @@ extension CalendarTask {
                 description: "GOP 9 Ground Floor",
                 startTime: time(hour: 15, minute: 30),
                 duration: 1800,
-                color: .appPink
+                color: .appPink,
+                image: "toilet"
             ),
             
             CalendarTask(
@@ -63,7 +68,8 @@ extension CalendarTask {
                 description: "Koridor GOP 9",
                 startTime: time(hour: 17),
                 duration: 3600,
-                color: .appBlue
+                color: .appBlue,
+                image: "electricity"
             )
         ]
     }()

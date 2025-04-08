@@ -32,7 +32,19 @@ struct TaskDetailView: View {
     var body: some View {
         ScrollView {
             ZStack{
+                
                 AnimatedBackground()
+                    .ignoresSafeArea()
+                
+                
+                Image(task.image)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .opacity(0.2)
+                    .offset(x: 100, y: -200)
+                    .zIndex(1)
+                
                 VStack(alignment: .leading, spacing: 16) {
                     
                     VStack(alignment:.leading, spacing: 20){
