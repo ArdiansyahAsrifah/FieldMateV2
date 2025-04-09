@@ -46,9 +46,9 @@ struct TaskDetailView: View {
                     .padding(.trailing, -200)
                     .zIndex(1)
                 
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 20) {
                     
-                    VStack(alignment:.leading, spacing: 20){
+                    VStack(alignment:.leading, spacing: 25){
                         VStack(alignment: .leading){
                             Text(task.title)
                                 .font(.system(size: 44, weight: .bold, design: .default))
@@ -60,33 +60,41 @@ struct TaskDetailView: View {
                             Text(task.description)
                                 .font(.body)
                                 .foregroundColor(.white)
+                            
+                            Spacer()
+                            Spacer()
+                            Spacer()
+                            
+                            Text("\(formattedDateMonth(date: task.startTime))  \(formattedTime(date: selectedDate))")
+                                .font(.title3)
+                                .fontWeight(.semibold)
+//                                .fontWeight(.medium)
+//                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                                .foregroundColor(.white)
                         }
                         
                         
-                        HStack{
-                            Text("\(formattedDateMonth(date: task.startTime))")
-                                .font(.headline)
-                                .fontWeight(.regular)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                                .padding(.top, 0)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 5)
-                                .background(colorScheme == .dark ? .black : .white)
-                                .cornerRadius(10)
-                            
-                            Text("\(formattedTime(date: selectedDate))")
-                                .font(.headline)
-                                .fontWeight(.regular)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                                .padding(.top, 0)
-                                .padding(.horizontal, 16)
-                                .padding(.vertical, 5)
-                                .background(colorScheme == .dark ? .black : .white)
-                                .cornerRadius(10)
-                            
-    
-                        }
-                        
+//                        HStack{
+//                            Text("\(formattedDateMonth(date: task.startTime))  \(formattedTime(date: selectedDate))")
+//                                .font(.subheadline)
+//                                .fontWeight(.medium)
+////                                .foregroundColor(colorScheme == .dark ? .white : .black)
+//                                .foregroundColor(.white)
+////                                .background(colorScheme == .dark ? .black : .white)
+//                            
+////                            Text("\(formattedTime(date: selectedDate))")
+////                                .font(.headline)
+////                                .fontWeight(.regular)
+////                                .foregroundColor(colorScheme == .dark ? .white : .black)
+////                                .padding(.top, 0)
+////                                .padding(.horizontal, 16)
+////                                .padding(.vertical, 5)
+////                                .background(colorScheme == .dark ? .black : .white)
+////                                .cornerRadius(10)
+//                            
+//    
+//                        }
+//                        
                         if isRescheduling {
                             DatePicker("Pilih Waktu", selection: $selectedDate, displayedComponents: [.date, .hourAndMinute])
                                 .datePickerStyle(GraphicalDatePickerStyle())
@@ -98,6 +106,8 @@ struct TaskDetailView: View {
                         
                     }
                     .padding(10)
+                    .padding(.bottom, -15)
+                    
                     
                     if !checkRows.isEmpty {
                         VStack{
@@ -108,7 +118,7 @@ struct TaskDetailView: View {
                                 let filledTable = checkRows.map { ($0.checkName, $0.condition, $0.action) }
                                 exportToPDF(category: selectedCategory, tableData: filledTable)
                             }) {
-                                Text("export ke PDF")
+                                Text("Export ke PDF")
                                     .frame(maxWidth: .infinity)
                                     .padding()
                                     .background(Color.blue)
@@ -126,6 +136,7 @@ struct TaskDetailView: View {
                 
                 }
                 .padding(20)
+                
                 .onAppear {
                     if let tableData = getTableData(for: selectedTask), checkRows.isEmpty {
                         self.checkRows = tableData.map { (checkName, defaultCondition, defaultAction) in
