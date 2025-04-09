@@ -37,7 +37,7 @@ struct CalendarView: View {
                                     .font(.system(size: 44, weight: .bold, design: .default))
                                     .foregroundColor(.white)
 
-                                Text("kamu punya \(CalendarTask.sampleTasks.count) tugas hari ini!")
+                                Text("Kamu punya \(CalendarTask.sampleTasks.count) tugas hari ini!")
                                     .font(.body)
                                     .foregroundColor(.white)
 

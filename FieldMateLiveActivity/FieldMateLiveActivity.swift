@@ -41,7 +41,7 @@ struct FieldMateLiveActivity: Widget {
     @DynamicIslandExpandedContentBuilder
     private func expandedContent(contentState: FieldMateLiveActivityAttributes.ContentState) -> DynamicIslandExpandedContent<some View> {
         DynamicIslandExpandedRegion(.leading) {
-            LiveActivityHeaderView(contentState: contentState)
+            LiveActivityHeaderView()
         }
         DynamicIslandExpandedRegion(.trailing) {
             NextTaskView(contentState: contentState)

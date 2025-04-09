@@ -14,29 +14,37 @@ struct LiveActivityContent: View {
     
     var body: some View {
         VStack (alignment: .leading){
-            HStack (alignment: .top) {
-                LiveActivityHeaderView(contentState: contentState)
+            HStack (alignment: .firstTextBaseline) {
+                LiveActivityHeaderView()
                 Spacer()
                 NextTaskView(contentState: contentState)
             }
             TaskProgressBar(taskTimes: contentState.taskListTimes)
+                .padding(.horizontal, 20)
         }
         .padding()
-        .padding(.bottom, 15)
+        .padding(.bottom, 5)
     }
 }
 
 struct LiveActivityHeaderView: View {
-    let contentState: FieldMateLiveActivityAttributes.ContentState
+//    let contentState: FieldMateLiveActivityAttributes.ContentState
     var body: some View {
         VStack(alignment: .leading){
-            Text("Tugas Selanjutnya →")
-                .font(.system(size: 20, weight: .bold, design: .default))
-                .minimumScaleFactor(0.7)
-            Text("\(contentState.taskListTimes.count) Tugas Hari Ini")
-                .font(.system(size: 15, weight: .regular, design: .default))
-                .minimumScaleFactor(0.7)
+//            Text("Tugas Selanjutnya →")
+//                .font(.system(size: 20, weight: .bold, design: .default))
+//                .minimumScaleFactor(0.7)
+//            Text("\(contentState.taskListTimes.count) Tugas Hari Ini")
+//                .font(.system(size: 15, weight: .regular, design: .default))
+//                .minimumScaleFactor(0.7)
+            Text("Selanjutnya")
+                .font(.caption)
+                .fontWeight(.medium)
+                .foregroundColor(.white)
         }
+        .padding(3)
+        .background(.gray)
+        .cornerRadius(5)
     }
 }
 
@@ -46,15 +54,12 @@ struct NextTaskView: View {
     var body: some View {
         VStack(alignment: .trailing){
             Text(contentState.taskTitle)
-                .font(.subheadline)
+                .font(.headline)
                 .bold()
             Text(contentState.taskLocation)
                 .font(.caption)
                 .foregroundColor(.orange)
                 .lineLimit(1)
-            Text("⏰ \(contentState.taskTime) ")
-                .font(.caption)
-                .bold()
         }
     }
 }
@@ -73,48 +78,74 @@ struct TaskProgressBar: View {
         }
     
     var body: some View {
-        VStack {
+        VStack(alignment: .center) {
             GeometryReader { geometry in
                 let totalWidth = geometry.size.width
                 
-                ZStack(alignment: .leading) {
-                    Rectangle()
-                        .frame(height: 8)
-                        .frame(maxWidth: .infinity)
-                        .cornerRadius(4)
-                        .position(x: 140, y: 20)
-                    
-                    ForEach(taskTimes, id: \.self) { time in
-                        if let fraction = timeFraction(for: time) {
-                            Image(systemName: "arrowshape.right.circle.fill")
-                                .foregroundColor(fraction > currentTimeFraction ? .blue : .gray)
-                                .frame(width: 20, height: 20)
-                                .position(x: totalWidth * fraction, y: 20)
-                            if fraction > currentTimeFraction {
-                                Text(time)
-                                    .font(.caption)
-                                    .fontWeight(.medium)
-                                    .position(x: totalWidth * fraction, y: 48)
+                VStack(alignment:.center){
+                    ZStack() {
+                        Rectangle()
+                            .frame(height: 8)
+                            .frame(width: totalWidth)
+                            .cornerRadius(4)
+                            .position(x: 140, y: 20)
+    //                    HStack {
+    //                        Rectangle()
+    //                            .frame(height: 8)
+    //                            .frame(maxWidth: totalWidth * currentTimeFraction)
+    //                            .cornerRadius(4)
+    //                            .position(x: 140, y: 20)
+    //                            .opacity(0.2)
+    //                        Rectangle()
+    //                            .frame(height: 8)
+    ////                            .frame(maxWidth: .infinity)
+    //                            .cornerRadius(4)
+    //                            .position(x: 140, y: 20)
+    //                    }
+    //                    .frame(width: .infinity)
+                        
+                        ForEach(taskTimes, id: \.self) { time in
+                            if let fraction = timeFraction(for: time) {
+    //                            Image(systemName: "arrowshape.right.circle.fill")
+                                Text("⚙️")
+                                    .font(.system(size:28, weight:.regular, design:.default))
+    //                                .foregroundColor(fraction > currentTimeFraction ? .blue : .gray)
+    //                                .frame(width: 20, height: 20)
+                                    .opacity(fraction > currentTimeFraction ? 1 : 0.2)
+                                    .position(x: totalWidth * fraction, y: 20)
+                                if fraction > currentTimeFraction {
+                                    Text(time)
+                                        .font(.caption)
+                                        .fontWeight(.medium)
+                                        .position(x: totalWidth * fraction, y: 48)
+                                }
                             }
                         }
+                        
+    //                    Text("⚙️")
+    //                        .font(.system(size:35, weight:.regular, design:.default))
+    //                        .position(x: totalWidth * currentTimeFraction, y: 20)
+    //                        .animation(.linear(duration: 0.5), value: currentTimeFraction)
+                        Image(systemName: "play.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(Color(hex: "#2980D0"))
+                            .frame(width: 20, height:20)
+                            .position(x: totalWidth * currentTimeFraction, y: 20)
+                            .animation(.linear(duration: 0.5), value: currentTimeFraction)
                     }
-                    
-                    Text("⚙️")
-                        .font(.system(size:35, weight:.regular, design:.default))
-                        .position(x: totalWidth * currentTimeFraction, y: 20)
-                        .animation(.linear(duration: 0.5), value: currentTimeFraction)
-                }
-                .onReceive(timer) { _ in
-                    updateCurrentTimeFraction(totalWidth: totalWidth)
-                }
-                .onAppear {
-                    updateCurrentTimeFraction(totalWidth: totalWidth)
+                    .onReceive(timer) { _ in
+                        updateCurrentTimeFraction(totalWidth: totalWidth)
+                    }
+                    .onAppear {
+                        updateCurrentTimeFraction(totalWidth: totalWidth)
+                    }
                 }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 15)
-        .padding(.bottom, showLabels ? 25 : 10)
+//        .padding(.horizontal, 10)
+        .padding(.bottom, showLabels ? 35 : 20)
     }
     func timeFraction(for time: String) -> CGFloat? {
         let components = time.split(separator: ":")
