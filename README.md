@@ -4,9 +4,9 @@ FieldMateV2 adalah aplikasi iOS yang dirancang untuk mendukung pencatatan dan ma
 
 ## 🧩 Fitur Utama
 
-- 🗓️ Penjadwalan aktivitas lapangan
-- 📸 Pelaporan Digital Maintenance Lapangan
-- 📊 Notifikasi Real Time Progress Task
+🗓️ Penjadwalan aktivitas lapangan
+📸 Pelaporan Digital Maintenance Lapangan
+📊 Notifikasi Real Time Progress Task
 
 ## 💁 Tampilan aplikasi
 
